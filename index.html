@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#ff6b35" />
+<title>MoveIt Real App - Tadepalligudem</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;-webkit-tap-highlight-color:transparent}body{background:#fff7ed;color:#1f2937;max-width:520px;margin:auto;min-height:100vh;padding-bottom:82px}.hide{display:none!important}.hero{min-height:100vh;background:linear-gradient(135deg,#ff6b35,#f59e0b,#fde047);color:white;padding:32px 18px;display:flex;flex-direction:column;justify-content:center}.brand{text-align:center;margin-bottom:28px}.brand .logo{font-size:64px}.brand h1{font-size:42px;font-weight:1000;letter-spacing:-1px}.brand p{font-size:14px;opacity:.95;margin-top:6px}.role{background:white;color:#111827;border-radius:22px;padding:18px;margin:12px 0;display:flex;gap:14px;align-items:center;box-shadow:0 16px 40px #9a341233}.role:active{transform:scale(.98)}.role .i{width:58px;height:58px;border-radius:18px;background:#fff7ed;display:grid;place-items:center;font-size:30px}.role b{font-size:18px}.role small{display:block;color:#6b7280;margin-top:4px;line-height:1.35}.top{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#ff6b35,#f59e0b);color:white;padding:14px 16px;box-shadow:0 4px 18px #0001}.top.driver{background:linear-gradient(135deg,#2563eb,#1d4ed8)}.top.admin{background:linear-gradient(135deg,#111827,#374151)}.toprow{display:flex;align-items:center;justify-content:space-between}.top h2{font-size:20px}.pill{font-size:11px;border:1px solid #fff8;border-radius:999px;padding:5px 10px;background:#ffffff22}.screen{display:none;padding:16px}.screen.active{display:block}.card{background:white;border:1px solid #fed7aa;border-radius:20px;padding:15px;margin-bottom:13px;box-shadow:0 8px 28px #9a34120f}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.service{background:#fff7ed;border:1px solid #fed7aa;border-radius:18px;padding:16px;text-align:center}.service .emoji{font-size:34px}.service b{display:block;margin-top:6px}.input,select,textarea{width:100%;padding:13px 14px;border:1px solid #e5e7eb;border-radius:14px;margin:7px 0 11px;font-size:15px;background:white}textarea{min-height:72px;resize:vertical}.btn{width:100%;border:0;border-radius:16px;padding:14px 16px;font-weight:900;font-size:15px;background:linear-gradient(135deg,#ff6b35,#f59e0b);color:white;box-shadow:0 8px 20px #f9731630}.btn.blue{background:linear-gradient(135deg,#2563eb,#1d4ed8)}.btn.green{background:linear-gradient(135deg,#16a34a,#15803d)}.btn.dark{background:linear-gradient(135deg,#111827,#374151)}.btn.gray{background:#e5e7eb;color:#111827}.btn.red{background:linear-gradient(135deg,#ef4444,#b91c1c)}.row{display:flex;gap:9px}.row .btn{flex:1}.muted{color:#6b7280;font-size:12px;line-height:1.5}.price{font-size:28px;font-weight:1000;color:#ea580c}.order{border-left:5px solid #fb923c}.order.pending{border-left-color:#f59e0b}.order.accepted{border-left-color:#2563eb}.order.completed{border-left-color:#16a34a}.order.cancelled{border-left-color:#ef4444}.oid{font-size:12px;font-weight:900;color:#6b7280}.tag{font-size:10px;font-weight:1000;border-radius:999px;padding:5px 8px;background:#fef3c7;color:#92400e;text-transform:uppercase}.tag.accepted{background:#dbeafe;color:#1d4ed8}.tag.completed{background:#dcfce7;color:#166534}.tag.cancelled{background:#fee2e2;color:#991b1b}.route{font-size:13px;margin:8px 0;color:#374151}.amount{font-size:20px;font-weight:1000;color:#111827}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;background:white;border-top:1px solid #fed7aa;display:flex;z-index:20}.nav button{flex:1;border:0;background:white;padding:9px 3px;color:#6b7280;font-weight:800;font-size:11px}.nav button.active{color:#ea580c}.nav .ico{display:block;font-size:22px;margin-bottom:2px}.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(20px);background:#111827;color:white;padding:12px 16px;border-radius:999px;font-size:13px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:92%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.setup{background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}.stat{background:#f8fafc;border-radius:16px;padding:13px;text-align:center}.stat b{font-size:22px}.smallbtn{display:inline-block;border:0;border-radius:999px;padding:8px 12px;font-weight:900;font-size:12px;text-decoration:none;color:white;background:#25d366}.call{background:#ff6b35}.map{background:#2563eb}code{background:#111827;color:#fde68a;border-radius:8px;padding:2px 6px;font-size:11px}.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.online{background:#dcfce7;color:#166534}.offline{background:#fee2e2;color:#991b1b}.itemrow{display:grid;grid-template-columns:1.4fr .6fr .7fr 36px;gap:7px;align-items:center}.x{border:0;border-radius:10px;background:#fee2e2;color:#991b1b;font-size:20px;height:42px}.loader{padding:18px;text-align:center;color:#6b7280}.safe{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.warn{background:#fffbeb;border-color:#fde68a;color:#92400e}@media(min-width:521px){body{box-shadow:0 0 60px #0002}}
+</style>
+</head>
+<body>
+<div id="roleScreen" class="hero">
+  <div class="brand"><div class="logo">🚚</div><h1>Move<span style="color:#fff200">It</span></h1><p>తాడేపల్లిగూడెం Local Delivery • Bike Taxi • Logistics</p></div>
+  <div id="firebaseStatus" class="card setup"><b>⚠️ Firebase config paste cheyali</b><br><small>Code lo <code>firebaseConfig</code> section lo mee Firebase details paste cheste real-time app work అవుతుంది.</small></div>
+  <div class="role" onclick="selectRole('customer')"><div class="i">👤</div><div><b>Customer</b><small>Order book cheyali, fare chudali, status track cheyali</small></div></div>
+  <div class="role" onclick="selectRole('driver')"><div class="i">🛵</div><div><b>Driver</b><small>Live orders receive cheyali, accept & complete cheyali</small></div></div>
+  <div class="role" onclick="adminLogin()"><div class="i" style="background:#111827;color:white">🔐</div><div><b>Admin</b><small>All orders, revenue, drivers, CSV export</small></div></div>
+</div>
+
+<header id="customerHeader" class="top hide"><div class="toprow"><h2>🚚 MoveIt</h2><span class="pill">Customer</span></div></header>
+<header id="driverHeader" class="top driver hide"><div class="toprow"><h2>🛵 Driver Panel</h2><span id="driverOnlineBadge" class="pill online">ONLINE</span></div></header>
+<header id="adminHeader" class="top admin hide"><div class="toprow"><h2>🔐 Admin Panel</h2><span class="pill">MoveIt</span></div></header>
+
+<main>
+<section id="customerHome" class="screen">
+  <div class="card"><h3>ఏం కావాలి?</h3><p class="muted">Local delivery, grocery, medicine, bike taxi, goods shifting — one app.</p></div>
+  <div class="grid">
+    <div class="service" onclick="startOrder('Anything Delivery')"><div class="emoji">✨</div><b>Anything</b><small>Items delivery</small></div>
+    <div class="service" onclick="startOrder('Bike Taxi')"><div class="emoji">🏍️</div><b>Bike Taxi</b><small>Person ride</small></div>
+    <div class="service" onclick="startOrder('Auto / Goods')"><div class="emoji">🛺</div><b>Auto/Goods</b><small>Small shifting</small></div>
+    <div class="service" onclick="startOrder('Medicine')"><div class="emoji">💊</div><b>Medicine</b><small>Pharmacy pickup</small></div>
+  </div>
+  <div class="card safe"><b>✅ Real-time Flow</b><p class="muted">Customer order book చేస్తే admin & driver panel లో liveగా కనిపిస్తుంది.</p></div>
+</section>
+
+<section id="bookingScreen" class="screen">
+  <div class="card"><h3 id="bookingTitle">New Booking</h3><label>Name</label><input id="cName" class="input" placeholder="మీ పేరు"><label>Phone</label><input id="cPhone" class="input" maxlength="10" inputmode="tel" placeholder="10 digit mobile"><label>Pickup</label><input id="pickup" class="input" placeholder="Pickup location"><label>Drop</label><input id="drop" class="input" placeholder="Drop location"><label>Distance KM</label><input id="distance" class="input" type="number" min="1" placeholder="Approx KM"><label>Items / Notes</label><textarea id="notes" placeholder="Example: 2 bags / vegetables / patient medicine"></textarea><div class="row"><button class="btn gray" onclick="showScreen('customerHome')">Back</button><button class="btn" onclick="calculateFare()">Fare Check</button></div></div>
+  <div id="quoteBox" class="card hide"><div class="muted">Estimated Total</div><div class="price" id="quotePrice">₹0</div><p class="muted" id="quoteNote"></p><button class="btn green" onclick="createOrder()">✅ Confirm Booking</button></div>
+</section>
+
+<section id="customerOrders" class="screen"><div class="card"><h3>My Orders</h3><p class="muted">ఈ phone number orders ఇక్కడ కనిపిస్తాయి.</p><input id="myPhone" class="input" maxlength="10" inputmode="tel" placeholder="Phone number"><button class="btn" onclick="watchMyOrders()">Search Orders</button></div><div id="myOrdersList" class="loader">Phone number enter cheyandi</div></section>
+
+<section id="supportScreen" class="screen"><div class="card"><h3>Support</h3><p class="muted">Office call / WhatsApp support</p><div class="row"><button class="btn green" onclick="whatsappOffice()">WhatsApp</button><button class="btn" onclick="callOffice()">Call</button></div></div></section>
+
+<section id="driverHome" class="screen">
+  <div class="card"><div class="row"><button id="onlineBtn" class="btn green" onclick="toggleDriverOnline()">🟢 Online</button><button class="btn blue" onclick="registerDriver()">Profile</button></div><p class="muted" style="margin-top:8px">Online lo unte pending orders liveగా వస్తాయి.</p></div>
+  <div class="kpi"><div class="stat"><small>Today</small><br><b id="dTrips">0</b></div><div class="stat"><small>Earn</small><br><b id="dEarn">₹0</b></div><div class="stat"><small>Total</small><br><b id="dTotal">0</b></div></div>
+  <div class="card"><h3>🔔 New Orders</h3></div><div id="driverOrders" class="loader">Listening orders...</div>
+</section>
+
+<section id="driverTrips" class="screen"><div class="card"><h3>Completed Trips</h3></div><div id="driverTripsList" class="loader">No trips</div></section>
+
+<section id="adminDash" class="screen">
+  <div class="kpi"><div class="stat"><small>Orders</small><br><b id="aOrders">0</b></div><div class="stat"><small>Revenue</small><br><b id="aRevenue">₹0</b></div><div class="stat"><small>Profit</small><br><b id="aProfit">₹0</b></div></div>
+  <div class="card"><div class="row"><button class="btn dark" onclick="exportCSV()">Export CSV</button><button class="btn red" onclick="clearLocalOnly()">Logout</button></div></div>
+  <div id="adminOrders" class="loader">Loading...</div>
+</section>
+</main>
+
+<nav id="bottomNav" class="nav hide"></nav>
+<div id="toast" class="toast"></div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js';
+import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js';
+import { getFirestore, collection, addDoc, doc, updateDoc, onSnapshot, query, where, orderBy, serverTimestamp, getDocs, limit } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
+
+// ✅ FIREBASE CONFIG: Firebase Console > Project Settings > Web app config paste cheyandi
+const firebaseConfig = {
+  apiKey: "PASTE_API_KEY_HERE",
+  authDomain: "PASTE_PROJECT.firebaseapp.com",
+  projectId: "PASTE_PROJECT_ID",
+  storageBucket: "PASTE_PROJECT.appspot.com",
+  messagingSenderId: "PASTE_SENDER_ID",
+  appId: "PASTE_APP_ID"
+};
+
+const CONFIG={officePhone:'919876543210', adminPassword:'moveit2026', baseFare:35, perKm:13, minFare:50, commission:0.65};
+let app,auth,db,isFirebase=false,currentRole='',currentService='',currentQuote=0,driverOnline=true,unsubs=[],lastOrders=[];
+const $=id=>document.getElementById(id);
+const money=n=>'₹'+Math.round(Number(n||0));
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)}
+function isConfigured(){return firebaseConfig.apiKey && !firebaseConfig.apiKey.includes('PASTE_') && !firebaseConfig.projectId.includes('PASTE_')}
+async function boot(){try{if(isConfigured()){app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);await signInAnonymously(auth);isFirebase=true;$('firebaseStatus').className='card safe';$('firebaseStatus').innerHTML='<b>✅ Firebase Connected</b><br><small>Real-time orders active.</small>'}else{isFirebase=false}}catch(e){console.error(e);isFirebase=false;$('firebaseStatus').innerHTML='<b>⚠️ Firebase error</b><br><small>'+e.message+'</small>'}}
+boot();
+function stopWatch(){unsubs.forEach(u=>u&&u());unsubs=[]}
+window.selectRole=role=>{currentRole=role;$('roleScreen').classList.add('hide');['customerHeader','driverHeader','adminHeader'].forEach(id=>$(id).classList.add('hide'));$(role+'Header')?.classList.remove('hide');setupNav(role); if(role==='customer')showScreen('customerHome'); if(role==='driver'){showScreen('driverHome');registerDriver(false);watchDriverOrders();watchDriverTrips();}}
+window.adminLogin=()=>{const p=prompt('Admin Password');if(p!==CONFIG.adminPassword){toast('Wrong password');return}currentRole='admin';$('roleScreen').classList.add('hide');$('adminHeader').classList.remove('hide');setupNav('admin');showScreen('adminDash');watchAdminOrders()}
+function setupNav(role){const nav=$('bottomNav');nav.classList.remove('hide');let items=[];if(role==='customer')items=[['🏠','Home',()=>showScreen('customerHome')],['📋','Orders',()=>showScreen('customerOrders')],['💬','Support',()=>showScreen('supportScreen')],['↻','Switch',switchRole]];if(role==='driver')items=[['🏠','Orders',()=>showScreen('driverHome')],['💰','Trips',()=>showScreen('driverTrips')],['📞','Office',callOffice],['↻','Switch',switchRole]];if(role==='admin')items=[['📊','Dashboard',()=>showScreen('adminDash')],['📤','Export',exportCSV],['☎️','Call',callOffice],['↻','Switch',switchRole]];nav.innerHTML=items.map((it,i)=>`<button onclick="navAction(${i})"><span class="ico">${it[0]}</span>${it[1]}</button>`).join('');window.navActions=items.map(i=>i[2]);setActiveNav(0)}
+window.navAction=i=>{window.navActions[i]();setActiveNav(i)};function setActiveNav(i){document.querySelectorAll('.nav button').forEach((b,x)=>b.classList.toggle('active',x===i))}
+function switchRole(){stopWatch();location.reload()}
+window.showScreen=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0)}
+window.startOrder=s=>{currentService=s;$('bookingTitle').textContent=s+' Booking';$('quoteBox').classList.add('hide');showScreen('bookingScreen')}
+window.calculateFare=()=>{const km=Number($('distance').value||0);if(!validBooking(false))return;let extra=currentService.includes('Auto')?80:currentService.includes('Bike')?0:20;currentQuote=Math.max(CONFIG.minFare,CONFIG.baseFare+(km*CONFIG.perKm)+extra);$('quotePrice').textContent=money(currentQuote);$('quoteNote').textContent=`Base ${money(CONFIG.baseFare)} + KM charge + service charge. Final amount admin/driver confirm cheyachu.`;$('quoteBox').classList.remove('hide')}
+function validBooking(finalCheck=true){if(!$('cName').value.trim())return toast('Name enter cheyandi'),false;if(!/^\d{10}$/.test($('cPhone').value.trim()))return toast('Valid phone enter cheyandi'),false;if(!$('pickup').value.trim())return toast('Pickup enter cheyandi'),false;if(!$('drop').value.trim())return toast('Drop enter cheyandi'),false;if(!Number($('distance').value||0))return toast('Distance enter cheyandi'),false;if(finalCheck&&!currentQuote)return toast('Fare check first'),false;return true}
+window.createOrder=async()=>{if(!validBooking(true))return;const order={service:currentService,name:$('cName').value.trim(),phone:$('cPhone').value.trim(),pickup:$('pickup').value.trim(),drop:$('drop').value.trim(),distance:Number($('distance').value),notes:$('notes').value.trim(),total:currentQuote,status:'pending',driverName:'',driverPhone:'',createdAt:serverTimestamp(),createdLocal:new Date().toISOString()};try{if(!isFirebase)throw new Error('Firebase config not added');const ref=await addDoc(collection(db,'orders'),order);localStorage.setItem('moveit_phone',order.phone);toast('✅ Order booked live!');whatsappOffice(`New MoveIt Order%0AID: ${ref.id}%0A${order.name} ${order.phone}%0A${order.service}%0A${order.pickup} → ${order.drop}%0AAmount ${money(order.total)}`);$('myPhone').value=order.phone;showScreen('customerOrders');watchMyOrders()}catch(e){saveLocal({...order,id:'LOCAL'+Date.now()});toast('Saved local only: Firebase config add cheyali');showScreen('customerOrders')}}
+function saveLocal(o){const a=JSON.parse(localStorage.getItem('moveit_orders')||'[]');a.unshift(o);localStorage.setItem('moveit_orders',JSON.stringify(a));lastOrders=a}
+window.watchMyOrders=()=>{const phone=$('myPhone').value.trim()||localStorage.getItem('moveit_phone')||'';$('myPhone').value=phone;if(!/^\d{10}$/.test(phone)){toast('Phone number enter cheyandi');return}stopWatch();if(isFirebase){const q=query(collection(db,'orders'),where('phone','==',phone),orderBy('createdAt','desc'),limit(30));unsubs.push(onSnapshot(q,s=>renderOrders('myOrdersList',s.docs.map(d=>({id:d.id,...d.data()})),false)))}else renderOrders('myOrdersList',JSON.parse(localStorage.getItem('moveit_orders')||'[]').filter(o=>o.phone===phone),false)}
+function orderHTML(o,mode){const status=o.status||'pending';const driver=o.driverName?`<p class="muted">Driver: ${o.driverName} ${o.driverPhone||''}</p>`:'';let actions='';if(mode==='driver'&&status==='pending')actions=`<div class="row"><button class="btn green" onclick="acceptOrder('${o.id}')">Accept</button><button class="btn red" onclick="updateOrder('${o.id}','cancelled')">Reject</button></div>`;if(mode==='driver'&&status==='accepted')actions=`<div class="row"><a class="smallbtn call" href="tel:+91${o.phone}">Call</a><a class="smallbtn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.pickup||'')}">Map</a><button class="btn green" onclick="updateOrder('${o.id}','completed')">Complete</button></div>`;if(mode==='admin'&&status!=='completed')actions=`<div class="row"><button class="btn blue" onclick="updateOrder('${o.id}','accepted')">Mark Accept</button><button class="btn green" onclick="updateOrder('${o.id}','completed')">Done</button></div>`;return `<div class="card order ${status}"><div style="display:flex;justify-content:space-between;gap:8px"><span class="oid">#${o.id}</span><span class="tag ${status}">${status}</span></div><h3>${o.service||'Order'} <span class="amount">${money(o.total)}</span></h3><div class="route">📍 ${o.pickup}<br>🏁 ${o.drop}</div><p class="muted">${o.name||''} • ${o.phone||''} • ${o.distance||0} KM<br>${o.notes||''}</p>${driver}<div style="margin-top:10px"><a class="smallbtn" target="_blank" href="https://wa.me/91${o.phone}">WhatsApp</a> <a class="smallbtn call" href="tel:+91${o.phone}">Call</a></div><div style="margin-top:10px">${actions}</div></div>`}
+function renderOrders(id,orders,admin=false,mode=''){lastOrders=orders||[];if(!orders.length){$(id).innerHTML='<div class="card"><p class="muted">No orders found</p></div>';return}$(id).innerHTML=orders.map(o=>orderHTML(o,mode||currentRole)).join('')}
+window.registerDriver=(ask=true)=>{let n=localStorage.getItem('driver_name'),p=localStorage.getItem('driver_phone');if(ask||!n){n=prompt('Driver name',n||'')||n;p=prompt('Driver phone',p||'')||p;if(n)localStorage.setItem('driver_name',n);if(p)localStorage.setItem('driver_phone',p)} }
+window.toggleDriverOnline=()=>{driverOnline=!driverOnline;$('onlineBtn').textContent=driverOnline?'🟢 Online':'🔴 Offline';$('onlineBtn').className='btn '+(driverOnline?'green':'red');$('driverOnlineBadge').textContent=driverOnline?'ONLINE':'OFFLINE';$('driverOnlineBadge').className='pill '+(driverOnline?'online':'offline')}
+function watchDriverOrders(){stopWatch();if(isFirebase){const q=query(collection(db,'orders'),where('status','in',['pending','accepted']),orderBy('createdAt','desc'),limit(50));unsubs.push(onSnapshot(q,s=>{const arr=s.docs.map(d=>({id:d.id,...d.data()})).filter(o=>driverOnline||o.status==='accepted');renderOrders('driverOrders',arr,false,'driver')}))}else $('driverOrders').innerHTML='<div class="card warn"><b>Firebase config paste cheyali</b><p class="muted">Real-time driver orders Firebase tarvata work అవుతాయి.</p></div>'}
+function watchDriverTrips(){if(!isFirebase)return;const q=query(collection(db,'orders'),where('status','==','completed'),orderBy('createdAt','desc'),limit(50));unsubs.push(onSnapshot(q,s=>{const arr=s.docs.map(d=>({id:d.id,...d.data()}));$('dTrips').textContent=arr.length;$('dEarn').textContent=money(arr.reduce((a,o)=>a+(Number(o.total||0)*CONFIG.commission),0));$('dTotal').textContent=arr.length;$('driverTripsList').innerHTML=arr.length?arr.map(o=>orderHTML(o,'driver')).join(''):'<div class="card">No trips</div>'}))}
+window.acceptOrder=async id=>{registerDriver(false);await updateOrder(id,'accepted',{driverName:localStorage.getItem('driver_name')||'Driver',driverPhone:localStorage.getItem('driver_phone')||''});toast('Order accepted')}
+window.updateOrder=async(id,status,extra={})=>{try{if(!isFirebase)throw new Error('Firebase required');await updateDoc(doc(db,'orders',id),{status,...extra,updatedAt:serverTimestamp()});toast('Updated: '+status)}catch(e){toast(e.message)}}
+function watchAdminOrders(){stopWatch();if(isFirebase){const q=query(collection(db,'orders'),orderBy('createdAt','desc'),limit(100));unsubs.push(onSnapshot(q,s=>{const arr=s.docs.map(d=>({id:d.id,...d.data()}));const rev=arr.reduce((a,o)=>a+Number(o.total||0),0);$('aOrders').textContent=arr.length;$('aRevenue').textContent=money(rev);$('aProfit').textContent=money(rev*.25);renderOrders('adminOrders',arr,true,'admin')}))}else{$('adminOrders').innerHTML='<div class="card warn"><b>Firebase config missing</b><p class="muted">Config paste cheyandi.</p></div>'}}
+window.exportCSV=()=>{const arr=lastOrders.length?lastOrders:JSON.parse(localStorage.getItem('moveit_orders')||'[]');if(!arr.length){toast('No data');return}const rows=['id,status,service,name,phone,pickup,drop,distance,total,notes'];arr.forEach(o=>rows.push([o.id,o.status,o.service,o.name,o.phone,o.pickup,o.drop,o.distance,o.total,(o.notes||'').replaceAll(',',' ')].map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')));const blob=new Blob([rows.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='moveit_orders.csv';a.click()}
+window.whatsappOffice=(msg)=>{window.open(`https://wa.me/${CONFIG.officePhone}?text=${msg||encodeURIComponent('Hi MoveIt, help kavali')}`,'_blank')}
+window.callOffice=()=>{location.href='tel:+'+CONFIG.officePhone}
+window.clearLocalOnly=()=>{localStorage.removeItem('moveit_role');location.reload()}
+</script>
+
+<!--
+FIREBASE RULES (testing): Firebase Console > Firestore Database > Rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /orders/{orderId} {
+      allow read, create, update: if request.auth != null;
+      allow delete: if false;
+    }
+  }
+}
+-->
+</body>
+</html>
 
