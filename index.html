@@ -1,129 +1,1998 @@
 <!DOCTYPE html>
 <html lang="te">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#ff6b35" />
-<title>MoveIt Real App - Tadepalligudem</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#FF6B35">
+<title>MoveIt - తాడేపల్లిగూడెం</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;-webkit-tap-highlight-color:transparent}body{background:#fff7ed;color:#1f2937;max-width:520px;margin:auto;min-height:100vh;padding-bottom:82px}.hide{display:none!important}.hero{min-height:100vh;background:linear-gradient(135deg,#ff6b35,#f59e0b,#fde047);color:white;padding:32px 18px;display:flex;flex-direction:column;justify-content:center}.brand{text-align:center;margin-bottom:28px}.brand .logo{font-size:64px}.brand h1{font-size:42px;font-weight:1000;letter-spacing:-1px}.brand p{font-size:14px;opacity:.95;margin-top:6px}.role{background:white;color:#111827;border-radius:22px;padding:18px;margin:12px 0;display:flex;gap:14px;align-items:center;box-shadow:0 16px 40px #9a341233}.role:active{transform:scale(.98)}.role .i{width:58px;height:58px;border-radius:18px;background:#fff7ed;display:grid;place-items:center;font-size:30px}.role b{font-size:18px}.role small{display:block;color:#6b7280;margin-top:4px;line-height:1.35}.top{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#ff6b35,#f59e0b);color:white;padding:14px 16px;box-shadow:0 4px 18px #0001}.top.driver{background:linear-gradient(135deg,#2563eb,#1d4ed8)}.top.admin{background:linear-gradient(135deg,#111827,#374151)}.toprow{display:flex;align-items:center;justify-content:space-between}.top h2{font-size:20px}.pill{font-size:11px;border:1px solid #fff8;border-radius:999px;padding:5px 10px;background:#ffffff22}.screen{display:none;padding:16px}.screen.active{display:block}.card{background:white;border:1px solid #fed7aa;border-radius:20px;padding:15px;margin-bottom:13px;box-shadow:0 8px 28px #9a34120f}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.service{background:#fff7ed;border:1px solid #fed7aa;border-radius:18px;padding:16px;text-align:center}.service .emoji{font-size:34px}.service b{display:block;margin-top:6px}.input,select,textarea{width:100%;padding:13px 14px;border:1px solid #e5e7eb;border-radius:14px;margin:7px 0 11px;font-size:15px;background:white}textarea{min-height:72px;resize:vertical}.btn{width:100%;border:0;border-radius:16px;padding:14px 16px;font-weight:900;font-size:15px;background:linear-gradient(135deg,#ff6b35,#f59e0b);color:white;box-shadow:0 8px 20px #f9731630}.btn.blue{background:linear-gradient(135deg,#2563eb,#1d4ed8)}.btn.green{background:linear-gradient(135deg,#16a34a,#15803d)}.btn.dark{background:linear-gradient(135deg,#111827,#374151)}.btn.gray{background:#e5e7eb;color:#111827}.btn.red{background:linear-gradient(135deg,#ef4444,#b91c1c)}.row{display:flex;gap:9px}.row .btn{flex:1}.muted{color:#6b7280;font-size:12px;line-height:1.5}.price{font-size:28px;font-weight:1000;color:#ea580c}.order{border-left:5px solid #fb923c}.order.pending{border-left-color:#f59e0b}.order.accepted{border-left-color:#2563eb}.order.completed{border-left-color:#16a34a}.order.cancelled{border-left-color:#ef4444}.oid{font-size:12px;font-weight:900;color:#6b7280}.tag{font-size:10px;font-weight:1000;border-radius:999px;padding:5px 8px;background:#fef3c7;color:#92400e;text-transform:uppercase}.tag.accepted{background:#dbeafe;color:#1d4ed8}.tag.completed{background:#dcfce7;color:#166534}.tag.cancelled{background:#fee2e2;color:#991b1b}.route{font-size:13px;margin:8px 0;color:#374151}.amount{font-size:20px;font-weight:1000;color:#111827}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;background:white;border-top:1px solid #fed7aa;display:flex;z-index:20}.nav button{flex:1;border:0;background:white;padding:9px 3px;color:#6b7280;font-weight:800;font-size:11px}.nav button.active{color:#ea580c}.nav .ico{display:block;font-size:22px;margin-bottom:2px}.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(20px);background:#111827;color:white;padding:12px 16px;border-radius:999px;font-size:13px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:92%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.setup{background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}.stat{background:#f8fafc;border-radius:16px;padding:13px;text-align:center}.stat b{font-size:22px}.smallbtn{display:inline-block;border:0;border-radius:999px;padding:8px 12px;font-weight:900;font-size:12px;text-decoration:none;color:white;background:#25d366}.call{background:#ff6b35}.map{background:#2563eb}code{background:#111827;color:#fde68a;border-radius:8px;padding:2px 6px;font-size:11px}.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.online{background:#dcfce7;color:#166534}.offline{background:#fee2e2;color:#991b1b}.itemrow{display:grid;grid-template-columns:1.4fr .6fr .7fr 36px;gap:7px;align-items:center}.x{border:0;border-radius:10px;background:#fee2e2;color:#991b1b;font-size:20px;height:42px}.loader{padding:18px;text-align:center;color:#6b7280}.safe{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.warn{background:#fffbeb;border-color:#fde68a;color:#92400e}@media(min-width:521px){body{box-shadow:0 0 60px #0002}}
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+  
+  html, body { height: 100%; overflow-x: hidden; background: #FFF8F3; color: #333; }
+  body { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; position: relative; padding-bottom: 70px; }
+  
+  /* ===== ROLE SELECTOR (FIRST SCREEN) ===== */
+  .role-screen {
+    background: linear-gradient(135deg, #FF6B35, #F7931E, #FFE600);
+    min-height: 100vh;
+    padding: 30px 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .role-logo {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .role-logo-icon { font-size: 80px; margin-bottom: 10px; }
+  .role-logo-text { font-size: 36px; font-weight: 900; letter-spacing: 1px; }
+  .role-logo-text span { color: #FFE600; }
+  .role-logo-tagline { font-size: 14px; opacity: 0.95; margin-top: 8px; }
+  
+  .role-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  
+  .role-subtitle {
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.9;
+    margin-bottom: 25px;
+  }
+  
+  .role-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .role-card {
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .role-card:active { transform: scale(0.97); }
+  
+  .role-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  
+  .role-card-info { flex: 1; }
+  
+  .role-card-name {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 3px;
+  }
+  
+  .role-card-desc {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.4;
+  }
+  
+  .role-card-arrow {
+    color: #FF6B35;
+    font-size: 24px;
+    font-weight: 900;
+  }
+  
+  .role-customer .role-card-icon { background: linear-gradient(135deg, #FFF8F3, #FFE8DA); }
+  .role-driver .role-card-icon { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+  .role-admin .role-card-icon { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; }
+  
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    color: white;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .header.driver-header { background: linear-gradient(135deg, #1976D2, #1565C0); }
+  .header.admin-header { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+  
+  .header-content { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 22px; font-weight: 900; }
+  .logo span { color: #FFE600; }
+  
+  .header-meta { font-size: 11px; opacity: 0.9; margin-top: 3px; }
+  
+  .header-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* ===== SCREENS ===== */
+  .screen { display: none; padding: 15px; min-height: calc(100vh - 200px); }
+  .screen.active { display: block; }
+  
+  /* CUSTOMER STYLES */
+  .greeting { margin: 5px 0 15px; }
+  .greeting h2 { font-size: 20px; color: #333; margin-bottom: 3px; }
+  .greeting p { font-size: 13px; color: #888; }
+  
+  .anything-card {
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(106,17,203,0.3);
+  }
+  
+  .anything-card:active { transform: scale(0.98); }
+  
+  .anything-icon { font-size: 42px; margin-bottom: 8px; }
+  .anything-title { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+  .anything-desc { font-size: 12px; opacity: 0.95; line-height: 1.4; }
+  
+  .anything-badge {
+    background: #FFE600;
+    color: #333;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 900;
+    display: inline-block;
+    margin-top: 8px;
+  }
+  
+  .section-title { font-size: 15px; font-weight: 700; color: #333; margin: 15px 0 10px; }
+  
+  .main-services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+  
+  .service-main {
+    background: linear-gradient(135deg, #FFF8F3, #FFE8DA);
+    border: 2px solid #FFE0CC;
+    border-radius: 15px;
+    padding: 18px 12px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .service-main.bike { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); border-color: #90CAF9; }
+  .service-main:active { transform: scale(0.95); }
+  
+  .service-main-icon { font-size: 36px; margin-bottom: 5px; }
+  .service-main-name { font-weight: 700; color: #333; font-size: 14px; }
+  .service-main-desc { font-size: 11px; color: #777; margin-top: 3px; }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .category-item {
+    background: white;
+    border: 1px solid #FFE0CC;
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .category-item:active { transform: scale(0.95); background: #FFF8F3; }
+  .category-icon { font-size: 32px; margin-bottom: 4px; }
+  .category-name { font-size: 12px; color: #333; font-weight: 700; }
+  .category-time { font-size: 10px; color: #888; margin-top: 2px; }
+  
+  .popular-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #4CAF50;
+    color: white;
+    padding: 1px 5px;
+    border-radius: 6px;
+    font-size: 8px;
+    font-weight: 900;
+  }
+  
+  /* FORMS */
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FF6B35;
+    font-weight: 700;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .form-title { font-size: 22px; font-weight: 900; color: #333; margin-bottom: 5px; }
+  .form-subtitle { font-size: 13px; color: #888; margin-bottom: 20px; }
+  
+  .input-group { margin-bottom: 15px; }
+  
+  .input-label {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 13px 15px;
+    border: 2px solid #FFE0CC;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+    font-family: inherit;
+  }
+  
+  .input-field:focus { border-color: #FF6B35; }
+  textarea.input-field { resize: vertical; min-height: 80px; }
+  
+  .items-list { margin: 10px 0; }
+  
+  .item-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #FFF8F3;
+    border-radius: 10px;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .item-row input {
+    border: none;
+    background: white;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+  }
+  
+  .item-name { flex: 1; }
+  .item-qty { width: 70px; text-align: center; }
+  .item-price { width: 80px; text-align: center; }
+  
+  .item-remove {
+    background: #FFE0E0;
+    color: #F44336;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .add-item-btn {
+    background: white;
+    border: 2px dashed #FF6B35;
+    color: #FF6B35;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  
+  .vehicle-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+  
+  .vehicle-option {
+    background: #FFF8F3;
+    border: 2px solid #FFE0CC;
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .vehicle-option.selected { background: #FFE8DA; border-color: #FF6B35; transform: scale(1.02); }
+  .vehicle-icon { font-size: 28px; }
+  .vehicle-name { font-size: 13px; font-weight: 700; color: #333; margin-top: 3px; }
+  .vehicle-price { font-size: 11px; color: #FF6B35; font-weight: 700; margin-top: 2px; }
+  
+  /* BUTTONS */
+  .btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; box-shadow: 0 4px 15px rgba(255,107,53,0.3); }
+  .btn-purple { background: linear-gradient(135deg, #6A11CB, #2575FC); color: white; }
+  .btn-whatsapp { background: #25D366; color: white; margin-top: 10px; }
+  .btn-secondary { background: #f0f0f0; color: #555; margin-top: 10px; }
+  
+  /* QUOTE */
+  .quote-card {
+    background: linear-gradient(135deg, #FFF8F3, #FFE8DA);
+    border: 2px dashed #FF6B35;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .quote-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255,107,53,0.2);
+    font-size: 14px;
+  }
+  
+  .quote-row:last-of-type {
+    border-bottom: none;
+    padding-top: 15px;
+    margin-top: 8px;
+    border-top: 2px solid #FF6B35;
+    font-size: 22px;
+    font-weight: 900;
+    color: #FF6B35;
+  }
+  
+  .quote-discount { color: #4CAF50; font-weight: 700; }
+  
+  /* SUCCESS */
+  .success-screen { text-align: center; padding-top: 30px; }
+  
+  .success-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: white;
+    animation: bounceIn 0.6s ease;
+  }
+  
+  @keyframes bounceIn {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  .success-title { font-size: 24px; font-weight: 900; color: #333; margin-bottom: 10px; }
+  
+  .order-id-badge {
+    background: #FFE600;
+    color: #333;
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    font-weight: 900;
+    margin: 10px 0 20px;
+  }
+  
+  /* DRIVER STYLES */
+  .status-card {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 30px rgba(76,175,80,0.3);
+  }
+  
+  .status-card.offline {
+    background: linear-gradient(135deg, #757575, #424242);
+    box-shadow: 0 10px 30px rgba(117,117,117,0.3);
+  }
+  
+  .status-icon-d { font-size: 40px; margin-bottom: 5px; }
+  .status-title { font-size: 20px; font-weight: 900; margin-bottom: 5px; }
+  .status-desc { font-size: 12px; opacity: 0.95; margin-bottom: 12px; }
+  
+  .toggle-btn {
+    background: white;
+    color: #4CAF50;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .status-card.offline .toggle-btn { color: #424242; }
+  
+  .earnings-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+  
+  .earning-box {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .earning-num { font-size: 18px; font-weight: 900; color: #1976D2; }
+  .earning-label { font-size: 10px; color: #666; margin-top: 3px; }
+  
+  .new-order-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 3px solid #FF6B35;
+    box-shadow: 0 10px 30px rgba(255,107,53,0.2);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 10px 30px rgba(255,107,53,0.2); }
+    50% { box-shadow: 0 10px 30px rgba(255,107,53,0.5); }
+  }
+  
+  .urgent-badge {
+    background: #FF6B35;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: 900;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  
+  .order-timer {
+    background: #F44336;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 900;
+    display: inline-block;
+    margin-left: 5px;
+  }
+  
+  .route-box { background: #F5F5F5; border-radius: 10px; padding: 10px; margin: 10px 0; }
+  
+  .route-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 0;
+  }
+  
+  .route-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    flex-shrink: 0;
+  }
+  
+  .pickup-icon { background: #4CAF50; }
+  .drop-icon { background: #F44336; }
+  
+  .route-text { flex: 1; font-size: 12px; color: #333; }
+  .route-line { border-left: 2px dashed #BBB; height: 12px; margin-left: 11px; }
+  
+  .earnings-display {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn-row { display: flex; gap: 8px; margin-top: 10px; }
+  
+  .btn-action {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  .btn-accept { background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white; }
+  .btn-reject { background: #F5F5F5; color: #666; }
+  
+  /* ADMIN STYLES */
+  .admin-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+  
+  .admin-stat-card {
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stat-orange { background: linear-gradient(135deg, #FF6B35, #F7931E); }
+  .stat-blue { background: linear-gradient(135deg, #1976D2, #1565C0); }
+  .stat-green { background: linear-gradient(135deg, #4CAF50, #2E7D32); }
+  .stat-purple { background: linear-gradient(135deg, #6A11CB, #2575FC); }
+  
+  .admin-stat-icon { font-size: 24px; margin-bottom: 5px; }
+  .admin-stat-label { font-size: 11px; opacity: 0.9; }
+  .admin-stat-value { font-size: 26px; font-weight: 900; margin: 5px 0; }
+  .admin-stat-change { font-size: 10px; opacity: 0.95; }
+  
+  .order-card {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-left: 4px solid #FFB400;
+  }
+  
+  .order-card.active { border-left-color: #4CAF50; }
+  .order-card.completed { border-left-color: #2196F3; opacity: 0.8; }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .order-id { font-weight: 900; color: #FF6B35; font-size: 12px; }
+  
+  .order-status-tag {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  
+  .tag-pending { background: #FFF9E6; color: #FFB400; }
+  .tag-active { background: #E8F5E9; color: #4CAF50; }
+  .tag-completed { background: #E3F2FD; color: #2196F3; }
+  .tag-confirmed { background: #E3F2FD; color: #2196F3; }
+  
+  .order-body { display: flex; gap: 10px; align-items: center; }
+  
+  .order-type-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #FFF8F3, #FFE8DA);
+  }
+  
+  .order-content { flex: 1; min-width: 0; }
+  .order-customer { font-weight: 700; color: #333; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .order-route { font-size: 11px; color: #888; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .order-amount { text-align: right; }
+  .order-price { color: #FF6B35; font-weight: 900; font-size: 14px; }
+  
+  /* BOTTOM NAV */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-top: 1px solid #EEE;
+    padding: 8px 0;
+    display: flex;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  }
+  
+  .nav-item { flex: 1; text-align: center; cursor: pointer; padding: 6px; }
+  .nav-icon { font-size: 22px; transition: transform 0.2s; }
+  .nav-label { font-size: 10px; color: #999; margin-top: 2px; font-weight: 600; }
+  .nav-item.active .nav-icon { transform: scale(1.2); }
+  .nav-item.active .nav-label { color: #FF6B35; font-weight: 700; }
+  
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    z-index: 1000;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+  
+  /* COMMON */
+  .info-card {
+    background: #E3F2FD;
+    border-left: 4px solid #2196F3;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 12px;
+    color: #1565C0;
+    line-height: 1.5;
+  }
+  
+  .empty-state { text-align: center; padding: 40px 20px; color: #999; }
+  .empty-icon { font-size: 60px; margin-bottom: 15px; }
+  
+  .booking-item {
+    background: white;
+    border: 1px solid #EEE;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .booking-icon-wrap {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #FFF8F3, #FFE8DA);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  
+  .booking-content { flex: 1; min-width: 0; }
+  .booking-name { font-weight: 700; color: #333; font-size: 14px; }
+  .booking-detail { font-size: 11px; color: #888; }
+  .booking-amount { text-align: right; }
+  .booking-price { color: #FF6B35; font-weight: 900; font-size: 14px; }
+  
+  .booking-status {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: 700;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  
+  .status-confirmed { background: #E8F5E9; color: #2E7D32; }
+  .status-completed { background: #E3F2FD; color: #1565C0; }
+  
+  .switch-role-btn {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+</style>
+
+<!-- MoveIt upgrade: optional Firebase realtime sync (UI/model unchanged) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<style>
+  /* Small upgrade only: stronger mobile polish, no model/layout change */
+  .input-field{transition:border-color .2s, box-shadow .2s}
+  .input-field:focus{box-shadow:0 0 0 4px rgba(255,107,53,.12)}
+  .role-card,.service-main,.category-item,.vehicle-option,.btn,.btn-action{transition:transform .16s, box-shadow .16s}
+  .order-card,.booking-item,.earning-box{box-shadow:0 6px 18px rgba(0,0,0,.06)}
+  .sync-badge{font-size:10px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.22);display:inline-block;margin-left:6px}
 </style>
 </head>
 <body>
-<div id="roleScreen" class="hero">
-  <div class="brand"><div class="logo">🚚</div><h1>Move<span style="color:#fff200">It</span></h1><p>తాడేపల్లిగూడెం Local Delivery • Bike Taxi • Logistics</p></div>
-  <div id="firebaseStatus" class="card setup"><b>⚠️ Firebase config paste cheyali</b><br><small>Code lo <code>firebaseConfig</code> section lo mee Firebase details paste cheste real-time app work అవుతుంది.</small></div>
-  <div class="role" onclick="selectRole('customer')"><div class="i">👤</div><div><b>Customer</b><small>Order book cheyali, fare chudali, status track cheyali</small></div></div>
-  <div class="role" onclick="selectRole('driver')"><div class="i">🛵</div><div><b>Driver</b><small>Live orders receive cheyali, accept & complete cheyali</small></div></div>
-  <div class="role" onclick="adminLogin()"><div class="i" style="background:#111827;color:white">🔐</div><div><b>Admin</b><small>All orders, revenue, drivers, CSV export</small></div></div>
+
+<!-- ===== ROLE SELECTOR (FIRST SCREEN) ===== -->
+<div class="screen active" id="roleScreen">
+  <div class="role-screen">
+    <div class="role-logo">
+      <div class="role-logo-icon">🚐</div>
+      <div class="role-logo-text">Move<span>It</span></div>
+      <div class="role-logo-tagline">తాడేపల్లిగూడెం No.1 Service</div>
+    </div>
+    
+    <div class="role-title">Welcome! 🙏</div>
+    <div class="role-subtitle">Mee role select cheyandi</div>
+    
+    <div class="role-cards">
+      <div class="role-card role-customer" onclick="selectRole('customer')">
+        <div class="role-card-icon">👤</div>
+        <div class="role-card-info">
+          <div class="role-card-name">I'm a Customer</div>
+          <div class="role-card-desc">Order place cheyali, shifting, bike taxi, items delivery</div>
+        </div>
+        <div class="role-card-arrow">→</div>
+      </div>
+      
+      <div class="role-card role-driver" onclick="selectRole('driver')">
+        <div class="role-card-icon">🏍️</div>
+        <div class="role-card-info">
+          <div class="role-card-name">I'm a Driver / Rider</div>
+          <div class="role-card-desc">Bike, Auto, Tempo unna — orders accept chesi earn cheyali</div>
+        </div>
+        <div class="role-card-arrow">→</div>
+      </div>
+      
+      <div class="role-card role-admin" onclick="adminLogin()">
+        <div class="role-card-icon">🔐</div>
+        <div class="role-card-info">
+          <div class="role-card-name">Admin / Owner</div>
+          <div class="role-card-desc">Business control panel (Password required)</div>
+        </div>
+        <div class="role-card-arrow">→</div>
+      </div>
+    </div>
+    
+    <div style="text-align:center; margin-top:30px; font-size:11px; opacity:0.9;">
+      First time? Don't worry — easy ga undi! 😊
+    </div>
+  </div>
 </div>
 
-<header id="customerHeader" class="top hide"><div class="toprow"><h2>🚚 MoveIt</h2><span class="pill">Customer</span></div></header>
-<header id="driverHeader" class="top driver hide"><div class="toprow"><h2>🛵 Driver Panel</h2><span id="driverOnlineBadge" class="pill online">ONLINE</span></div></header>
-<header id="adminHeader" class="top admin hide"><div class="toprow"><h2>🔐 Admin Panel</h2><span class="pill">MoveIt</span></div></header>
-
-<main>
-<section id="customerHome" class="screen">
-  <div class="card"><h3>ఏం కావాలి?</h3><p class="muted">Local delivery, grocery, medicine, bike taxi, goods shifting — one app.</p></div>
-  <div class="grid">
-    <div class="service" onclick="startOrder('Anything Delivery')"><div class="emoji">✨</div><b>Anything</b><small>Items delivery</small></div>
-    <div class="service" onclick="startOrder('Bike Taxi')"><div class="emoji">🏍️</div><b>Bike Taxi</b><small>Person ride</small></div>
-    <div class="service" onclick="startOrder('Auto / Goods')"><div class="emoji">🛺</div><b>Auto/Goods</b><small>Small shifting</small></div>
-    <div class="service" onclick="startOrder('Medicine')"><div class="emoji">💊</div><b>Medicine</b><small>Pharmacy pickup</small></div>
+<!-- ===== CUSTOMER APP HEADER ===== -->
+<div class="header" id="customerHeader" style="display:none;">
+  <div class="header-content">
+    <div>
+      <div class="logo">Move<span>It</span> 🚐</div>
+      <div class="header-meta">📍 తాడేపల్లిగూడెం <span class="sync-badge">Ready</span></div>
+    </div>
+    <button class="switch-role-btn" onclick="backToRoles()">↻ Switch</button>
   </div>
-  <div class="card safe"><b>✅ Real-time Flow</b><p class="muted">Customer order book చేస్తే admin & driver panel లో liveగా కనిపిస్తుంది.</p></div>
-</section>
+</div>
 
-<section id="bookingScreen" class="screen">
-  <div class="card"><h3 id="bookingTitle">New Booking</h3><label>Name</label><input id="cName" class="input" placeholder="మీ పేరు"><label>Phone</label><input id="cPhone" class="input" maxlength="10" inputmode="tel" placeholder="10 digit mobile"><label>Pickup</label><input id="pickup" class="input" placeholder="Pickup location"><label>Drop</label><input id="drop" class="input" placeholder="Drop location"><label>Distance KM</label><input id="distance" class="input" type="number" min="1" placeholder="Approx KM"><label>Items / Notes</label><textarea id="notes" placeholder="Example: 2 bags / vegetables / patient medicine"></textarea><div class="row"><button class="btn gray" onclick="showScreen('customerHome')">Back</button><button class="btn" onclick="calculateFare()">Fare Check</button></div></div>
-  <div id="quoteBox" class="card hide"><div class="muted">Estimated Total</div><div class="price" id="quotePrice">₹0</div><p class="muted" id="quoteNote"></p><button class="btn green" onclick="createOrder()">✅ Confirm Booking</button></div>
-</section>
+<!-- ===== DRIVER APP HEADER ===== -->
+<div class="header driver-header" id="driverHeader" style="display:none;">
+  <div class="header-content">
+    <div>
+      <div class="logo">Move<span>It</span> Partner</div>
+      <div class="header-meta">🏍️ Driver Mode <span class="sync-badge">Live</span></div>
+    </div>
+    <button class="switch-role-btn" onclick="backToRoles()">↻ Switch</button>
+  </div>
+</div>
 
-<section id="customerOrders" class="screen"><div class="card"><h3>My Orders</h3><p class="muted">ఈ phone number orders ఇక్కడ కనిపిస్తాయి.</p><input id="myPhone" class="input" maxlength="10" inputmode="tel" placeholder="Phone number"><button class="btn" onclick="watchMyOrders()">Search Orders</button></div><div id="myOrdersList" class="loader">Phone number enter cheyandi</div></section>
+<!-- ===== ADMIN HEADER ===== -->
+<div class="header admin-header" id="adminHeader" style="display:none;">
+  <div class="header-content">
+    <div>
+      <div class="logo">Move<span>It</span> Admin</div>
+      <div class="header-meta">📊 Owner Control <span class="sync-badge">Admin</span></div>
+    </div>
+    <button class="switch-role-btn" onclick="backToRoles()">↻ Switch</button>
+  </div>
+</div>
 
-<section id="supportScreen" class="screen"><div class="card"><h3>Support</h3><p class="muted">Office call / WhatsApp support</p><div class="row"><button class="btn green" onclick="whatsappOffice()">WhatsApp</button><button class="btn" onclick="callOffice()">Call</button></div></div></section>
+<!-- ============================================ -->
+<!-- ============== CUSTOMER SCREENS ============ -->
+<!-- ============================================ -->
 
-<section id="driverHome" class="screen">
-  <div class="card"><div class="row"><button id="onlineBtn" class="btn green" onclick="toggleDriverOnline()">🟢 Online</button><button class="btn blue" onclick="registerDriver()">Profile</button></div><p class="muted" style="margin-top:8px">Online lo unte pending orders liveగా వస్తాయి.</p></div>
-  <div class="kpi"><div class="stat"><small>Today</small><br><b id="dTrips">0</b></div><div class="stat"><small>Earn</small><br><b id="dEarn">₹0</b></div><div class="stat"><small>Total</small><br><b id="dTotal">0</b></div></div>
-  <div class="card"><h3>🔔 New Orders</h3></div><div id="driverOrders" class="loader">Listening orders...</div>
-</section>
+<!-- Customer Home -->
+<div class="screen" id="customerHome">
+  <div class="greeting">
+    <h2 id="greetUser">నమస్కారం! 🙏</h2>
+    <p>Em help kavali meeku?</p>
+  </div>
+  
+  <div class="anything-card" onclick="showScreen('anythingOrder')">
+    <div class="anything-icon">✨🏍️</div>
+    <div class="anything-title">Anything Order</div>
+    <div class="anything-desc">
+      Vegetables, Milk, Medicine, Groceries...<br>
+      Bike rider tisukocchi isthadu!
+    </div>
+    <div class="anything-badge">⚡ 30 MIN DELIVERY</div>
+  </div>
+  
+  <div class="section-title">🚀 Main Services</div>
+  <div class="main-services">
+    <div class="service-main" onclick="showScreen('bookLogistics')">
+      <div class="service-main-icon">🚐</div>
+      <div class="service-main-name">Shifting & Delivery</div>
+      <div class="service-main-desc">Auto, Tempo, Helper</div>
+    </div>
+    <div class="service-main bike" onclick="showScreen('bookBike')">
+      <div class="service-main-icon">🏍️</div>
+      <div class="service-main-name">Bike Taxi</div>
+      <div class="service-main-desc">Quick rides</div>
+    </div>
+  </div>
+  
+  <div class="section-title">⚡ Quick Categories</div>
+  <div class="categories-grid">
+    <div class="category-item" onclick="quickAnythingOrder('Vegetables')">
+      <div class="popular-badge">HOT</div>
+      <div class="category-icon">🥬</div>
+      <div class="category-name">Vegetables</div>
+      <div class="category-time">30 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Milk & Dairy')">
+      <div class="category-icon">🥛</div>
+      <div class="category-name">Milk/Dairy</div>
+      <div class="category-time">20 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Medicine')">
+      <div class="popular-badge">HOT</div>
+      <div class="category-icon">💊</div>
+      <div class="category-name">Medicine</div>
+      <div class="category-time">25 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Grocery')">
+      <div class="category-icon">🛒</div>
+      <div class="category-name">Grocery</div>
+      <div class="category-time">40 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Fruits')">
+      <div class="category-icon">🍎</div>
+      <div class="category-name">Fruits</div>
+      <div class="category-time">30 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Food/Hotel')">
+      <div class="category-icon">🍱</div>
+      <div class="category-name">Food</div>
+      <div class="category-time">35 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Bakery')">
+      <div class="category-icon">🍞</div>
+      <div class="category-name">Bakery</div>
+      <div class="category-time">25 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Cylinder')">
+      <div class="category-icon">🔥</div>
+      <div class="category-name">Cylinder</div>
+      <div class="category-time">30 min</div>
+    </div>
+    <div class="category-item" onclick="quickAnythingOrder('Other')">
+      <div class="category-icon">✨</div>
+      <div class="category-name">Other</div>
+      <div class="category-time">Custom</div>
+    </div>
+  </div>
+</div>
 
-<section id="driverTrips" class="screen"><div class="card"><h3>Completed Trips</h3></div><div id="driverTripsList" class="loader">No trips</div></section>
+<!-- Anything Order Form -->
+<div class="screen" id="anythingOrder">
+  <div class="back-btn" onclick="showScreen('customerHome')">← Back</div>
+  <div class="form-title">✨ Anything Order</div>
+  <div class="form-subtitle">Em kavalo cheppandi!</div>
+  
+  <div class="info-card">
+    Bike rider shop visit chesi mee items konthadu, mee ki deliver chesthadu!
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">🏪 Pickup Shop *</label>
+    <input type="text" class="input-field" id="anyPickup" placeholder="Ex: Rythu Bazaar">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📦 Items List *</label>
+    <div class="items-list" id="anyItemsList">
+      <div class="item-row">
+        <input type="text" class="item-name" placeholder="Item (Tomatoes)">
+        <input type="text" class="item-qty" placeholder="Qty (1 kg)">
+        <input type="number" class="item-price" placeholder="₹ est.">
+        <button class="item-remove" onclick="removeItem(this)">×</button>
+      </div>
+    </div>
+    <button class="add-item-btn" onclick="addItem()">+ Add More Item</button>
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">🎯 Delivery Address *</label>
+    <input type="text" class="input-field" id="anyDrop" placeholder="Mee home address">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📏 Distance (km) *</label>
+    <input type="number" class="input-field" id="anyDistance" value="2">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📱 Phone *</label>
+    <input type="tel" class="input-field" id="anyPhone" placeholder="9876543210" maxlength="10">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">👤 Name *</label>
+    <input type="text" class="input-field" id="anyName" placeholder="Mee peru">
+  </div>
+  
+  <button class="btn btn-purple" onclick="calculateAnythingQuote()">Get Quote →</button>
+</div>
 
-<section id="adminDash" class="screen">
-  <div class="kpi"><div class="stat"><small>Orders</small><br><b id="aOrders">0</b></div><div class="stat"><small>Revenue</small><br><b id="aRevenue">₹0</b></div><div class="stat"><small>Profit</small><br><b id="aProfit">₹0</b></div></div>
-  <div class="card"><div class="row"><button class="btn dark" onclick="exportCSV()">Export CSV</button><button class="btn red" onclick="clearLocalOnly()">Logout</button></div></div>
-  <div id="adminOrders" class="loader">Loading...</div>
-</section>
-</main>
+<!-- Logistics Booking -->
+<div class="screen" id="bookLogistics">
+  <div class="back-btn" onclick="showScreen('customerHome')">← Back</div>
+  <div class="form-title">🚐 Shifting & Delivery</div>
+  <div class="form-subtitle">Big items shift cheyali?</div>
+  
+  <div class="input-group">
+    <label class="input-label">📍 Pickup Address *</label>
+    <input type="text" class="input-field" id="pickupAddr" placeholder="Pickup location">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">🎯 Drop Address *</label>
+    <input type="text" class="input-field" id="dropAddr" placeholder="Drop location">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📦 Items *</label>
+    <textarea class="input-field" id="itemsList" placeholder="Ex: 1 bed, 2 trunks"></textarea>
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">🚗 Vehicle *</label>
+    <div class="vehicle-options">
+      <div class="vehicle-option selected" data-type="Auto" data-base="300" data-perkm="25" onclick="selectVehicle(this)">
+        <div class="vehicle-icon">🛺</div>
+        <div class="vehicle-name">Auto</div>
+        <div class="vehicle-price">₹300+</div>
+      </div>
+      <div class="vehicle-option" data-type="Mini Tempo" data-base="600" data-perkm="35" onclick="selectVehicle(this)">
+        <div class="vehicle-icon">🚐</div>
+        <div class="vehicle-name">Mini Tempo</div>
+        <div class="vehicle-price">₹600+</div>
+      </div>
+      <div class="vehicle-option" data-type="Big Tempo" data-base="1500" data-perkm="50" onclick="selectVehicle(this)">
+        <div class="vehicle-icon">🚛</div>
+        <div class="vehicle-name">Big Tempo</div>
+        <div class="vehicle-price">₹1500+</div>
+      </div>
+      <div class="vehicle-option" data-type="Bike" data-base="80" data-perkm="15" onclick="selectVehicle(this)">
+        <div class="vehicle-icon">🏍️</div>
+        <div class="vehicle-name">Bike</div>
+        <div class="vehicle-price">₹80+</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📏 Distance (km) *</label>
+    <input type="number" class="input-field" id="distance" value="3">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📱 Phone *</label>
+    <input type="tel" class="input-field" id="customerPhone" placeholder="9876543210" maxlength="10">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">👤 Name *</label>
+    <input type="text" class="input-field" id="customerName" placeholder="Mee peru">
+  </div>
+  
+  <button class="btn btn-primary" onclick="calculateQuote()">Get Quote →</button>
+</div>
 
-<nav id="bottomNav" class="nav hide"></nav>
-<div id="toast" class="toast"></div>
+<!-- Bike Taxi -->
+<div class="screen" id="bookBike">
+  <div class="back-btn" onclick="showScreen('customerHome')">← Back</div>
+  <div class="form-title">🏍️ Bike Taxi</div>
+  <div class="form-subtitle">Quick ride</div>
+  
+  <div class="input-group">
+    <label class="input-label">📍 Pickup *</label>
+    <input type="text" class="input-field" id="bikePickup" placeholder="Pickup">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">🎯 Drop *</label>
+    <input type="text" class="input-field" id="bikeDrop" placeholder="Drop">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📏 Distance (km)</label>
+    <input type="number" class="input-field" id="bikeDistance" value="2">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">📱 Phone *</label>
+    <input type="tel" class="input-field" id="bikePhone" placeholder="9876543210" maxlength="10">
+  </div>
+  
+  <div class="input-group">
+    <label class="input-label">👤 Name *</label>
+    <input type="text" class="input-field" id="bikeName" placeholder="Name">
+  </div>
+  
+  <button class="btn btn-primary" onclick="calculateBikeQuote()" style="background:linear-gradient(135deg, #2196F3, #1976D2);">Get Quote →</button>
+</div>
 
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js';
-import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js';
-import { getFirestore, collection, addDoc, doc, updateDoc, onSnapshot, query, where, orderBy, serverTimestamp, getDocs, limit } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
+<!-- Quote Screen -->
+<div class="screen" id="quoteScreen">
+  <div class="back-btn" onclick="showScreen('customerHome')">← Cancel</div>
+  <div class="form-title">💰 Price Quote</div>
+  <div class="form-subtitle">Mee order summary</div>
+  
+  <div class="quote-card" id="quoteDetails"></div>
+  
+  <button class="btn btn-primary" onclick="confirmBooking()">✓ Confirm Order</button>
+  <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">💬 Send to WhatsApp</button>
+  <button class="btn btn-secondary" onclick="showScreen('customerHome')">Cancel</button>
+</div>
 
-// ✅ FIREBASE CONFIG: Firebase Console > Project Settings > Web app config paste cheyandi
-const firebaseConfig = {
-  apiKey: "PASTE_API_KEY_HERE",
-  authDomain: "PASTE_PROJECT.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
-};
+<!-- Success Screen -->
+<div class="screen" id="successScreen">
+  <div class="success-screen">
+    <div class="success-icon">✓</div>
+    <div class="success-title">Order Placed! 🎉</div>
+    <p style="color:#888;">Mee order successful ga place ayyindi</p>
+    <div class="order-id-badge">Order #<span id="newOrderId">MV0001</span></div>
+    
+    <div style="background:#FFF8F3; padding:15px; border-radius:12px; margin:20px 0; text-align:left;">
+      <div style="font-size:13px; color:#888; margin-bottom:5px;">📞 Office:</div>
+      <div style="font-size:18px; font-weight:900; color:#FF6B35;" id="officeNum">98XXX XXXXX</div>
+      <div style="font-size:11px; color:#666; margin-top:5px;">Driver 30 min lo hajir!</div>
+    </div>
+    
+    <button class="btn btn-whatsapp" onclick="sendBookingWhatsApp()">💬 WhatsApp Office</button>
+    <button class="btn btn-primary" onclick="showScreen('customerHome')" style="margin-top:10px;">Home</button>
+  </div>
+</div>
 
-const CONFIG={officePhone:'919876543210', adminPassword:'moveit2026', baseFare:35, perKm:13, minFare:50, commission:0.65};
-let app,auth,db,isFirebase=false,currentRole='',currentService='',currentQuote=0,driverOnline=true,unsubs=[],lastOrders=[];
-const $=id=>document.getElementById(id);
-const money=n=>'₹'+Math.round(Number(n||0));
-function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)}
-function isConfigured(){return firebaseConfig.apiKey && !firebaseConfig.apiKey.includes('PASTE_') && !firebaseConfig.projectId.includes('PASTE_')}
-async function boot(){try{if(isConfigured()){app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);await signInAnonymously(auth);isFirebase=true;$('firebaseStatus').className='card safe';$('firebaseStatus').innerHTML='<b>✅ Firebase Connected</b><br><small>Real-time orders active.</small>'}else{isFirebase=false}}catch(e){console.error(e);isFirebase=false;$('firebaseStatus').innerHTML='<b>⚠️ Firebase error</b><br><small>'+e.message+'</small>'}}
-boot();
-function stopWatch(){unsubs.forEach(u=>u&&u());unsubs=[]}
-window.selectRole=role=>{currentRole=role;$('roleScreen').classList.add('hide');['customerHeader','driverHeader','adminHeader'].forEach(id=>$(id).classList.add('hide'));$(role+'Header')?.classList.remove('hide');setupNav(role); if(role==='customer')showScreen('customerHome'); if(role==='driver'){showScreen('driverHome');registerDriver(false);watchDriverOrders();watchDriverTrips();}}
-window.adminLogin=()=>{const p=prompt('Admin Password');if(p!==CONFIG.adminPassword){toast('Wrong password');return}currentRole='admin';$('roleScreen').classList.add('hide');$('adminHeader').classList.remove('hide');setupNav('admin');showScreen('adminDash');watchAdminOrders()}
-function setupNav(role){const nav=$('bottomNav');nav.classList.remove('hide');let items=[];if(role==='customer')items=[['🏠','Home',()=>showScreen('customerHome')],['📋','Orders',()=>showScreen('customerOrders')],['💬','Support',()=>showScreen('supportScreen')],['↻','Switch',switchRole]];if(role==='driver')items=[['🏠','Orders',()=>showScreen('driverHome')],['💰','Trips',()=>showScreen('driverTrips')],['📞','Office',callOffice],['↻','Switch',switchRole]];if(role==='admin')items=[['📊','Dashboard',()=>showScreen('adminDash')],['📤','Export',exportCSV],['☎️','Call',callOffice],['↻','Switch',switchRole]];nav.innerHTML=items.map((it,i)=>`<button onclick="navAction(${i})"><span class="ico">${it[0]}</span>${it[1]}</button>`).join('');window.navActions=items.map(i=>i[2]);setActiveNav(0)}
-window.navAction=i=>{window.navActions[i]();setActiveNav(i)};function setActiveNav(i){document.querySelectorAll('.nav button').forEach((b,x)=>b.classList.toggle('active',x===i))}
-function switchRole(){stopWatch();location.reload()}
-window.showScreen=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0)}
-window.startOrder=s=>{currentService=s;$('bookingTitle').textContent=s+' Booking';$('quoteBox').classList.add('hide');showScreen('bookingScreen')}
-window.calculateFare=()=>{const km=Number($('distance').value||0);if(!validBooking(false))return;let extra=currentService.includes('Auto')?80:currentService.includes('Bike')?0:20;currentQuote=Math.max(CONFIG.minFare,CONFIG.baseFare+(km*CONFIG.perKm)+extra);$('quotePrice').textContent=money(currentQuote);$('quoteNote').textContent=`Base ${money(CONFIG.baseFare)} + KM charge + service charge. Final amount admin/driver confirm cheyachu.`;$('quoteBox').classList.remove('hide')}
-function validBooking(finalCheck=true){if(!$('cName').value.trim())return toast('Name enter cheyandi'),false;if(!/^\d{10}$/.test($('cPhone').value.trim()))return toast('Valid phone enter cheyandi'),false;if(!$('pickup').value.trim())return toast('Pickup enter cheyandi'),false;if(!$('drop').value.trim())return toast('Drop enter cheyandi'),false;if(!Number($('distance').value||0))return toast('Distance enter cheyandi'),false;if(finalCheck&&!currentQuote)return toast('Fare check first'),false;return true}
-window.createOrder=async()=>{if(!validBooking(true))return;const order={service:currentService,name:$('cName').value.trim(),phone:$('cPhone').value.trim(),pickup:$('pickup').value.trim(),drop:$('drop').value.trim(),distance:Number($('distance').value),notes:$('notes').value.trim(),total:currentQuote,status:'pending',driverName:'',driverPhone:'',createdAt:serverTimestamp(),createdLocal:new Date().toISOString()};try{if(!isFirebase)throw new Error('Firebase config not added');const ref=await addDoc(collection(db,'orders'),order);localStorage.setItem('moveit_phone',order.phone);toast('✅ Order booked live!');whatsappOffice(`New MoveIt Order%0AID: ${ref.id}%0A${order.name} ${order.phone}%0A${order.service}%0A${order.pickup} → ${order.drop}%0AAmount ${money(order.total)}`);$('myPhone').value=order.phone;showScreen('customerOrders');watchMyOrders()}catch(e){saveLocal({...order,id:'LOCAL'+Date.now()});toast('Saved local only: Firebase config add cheyali');showScreen('customerOrders')}}
-function saveLocal(o){const a=JSON.parse(localStorage.getItem('moveit_orders')||'[]');a.unshift(o);localStorage.setItem('moveit_orders',JSON.stringify(a));lastOrders=a}
-window.watchMyOrders=()=>{const phone=$('myPhone').value.trim()||localStorage.getItem('moveit_phone')||'';$('myPhone').value=phone;if(!/^\d{10}$/.test(phone)){toast('Phone number enter cheyandi');return}stopWatch();if(isFirebase){const q=query(collection(db,'orders'),where('phone','==',phone),orderBy('createdAt','desc'),limit(30));unsubs.push(onSnapshot(q,s=>renderOrders('myOrdersList',s.docs.map(d=>({id:d.id,...d.data()})),false)))}else renderOrders('myOrdersList',JSON.parse(localStorage.getItem('moveit_orders')||'[]').filter(o=>o.phone===phone),false)}
-function orderHTML(o,mode){const status=o.status||'pending';const driver=o.driverName?`<p class="muted">Driver: ${o.driverName} ${o.driverPhone||''}</p>`:'';let actions='';if(mode==='driver'&&status==='pending')actions=`<div class="row"><button class="btn green" onclick="acceptOrder('${o.id}')">Accept</button><button class="btn red" onclick="updateOrder('${o.id}','cancelled')">Reject</button></div>`;if(mode==='driver'&&status==='accepted')actions=`<div class="row"><a class="smallbtn call" href="tel:+91${o.phone}">Call</a><a class="smallbtn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.pickup||'')}">Map</a><button class="btn green" onclick="updateOrder('${o.id}','completed')">Complete</button></div>`;if(mode==='admin'&&status!=='completed')actions=`<div class="row"><button class="btn blue" onclick="updateOrder('${o.id}','accepted')">Mark Accept</button><button class="btn green" onclick="updateOrder('${o.id}','completed')">Done</button></div>`;return `<div class="card order ${status}"><div style="display:flex;justify-content:space-between;gap:8px"><span class="oid">#${o.id}</span><span class="tag ${status}">${status}</span></div><h3>${o.service||'Order'} <span class="amount">${money(o.total)}</span></h3><div class="route">📍 ${o.pickup}<br>🏁 ${o.drop}</div><p class="muted">${o.name||''} • ${o.phone||''} • ${o.distance||0} KM<br>${o.notes||''}</p>${driver}<div style="margin-top:10px"><a class="smallbtn" target="_blank" href="https://wa.me/91${o.phone}">WhatsApp</a> <a class="smallbtn call" href="tel:+91${o.phone}">Call</a></div><div style="margin-top:10px">${actions}</div></div>`}
-function renderOrders(id,orders,admin=false,mode=''){lastOrders=orders||[];if(!orders.length){$(id).innerHTML='<div class="card"><p class="muted">No orders found</p></div>';return}$(id).innerHTML=orders.map(o=>orderHTML(o,mode||currentRole)).join('')}
-window.registerDriver=(ask=true)=>{let n=localStorage.getItem('driver_name'),p=localStorage.getItem('driver_phone');if(ask||!n){n=prompt('Driver name',n||'')||n;p=prompt('Driver phone',p||'')||p;if(n)localStorage.setItem('driver_name',n);if(p)localStorage.setItem('driver_phone',p)} }
-window.toggleDriverOnline=()=>{driverOnline=!driverOnline;$('onlineBtn').textContent=driverOnline?'🟢 Online':'🔴 Offline';$('onlineBtn').className='btn '+(driverOnline?'green':'red');$('driverOnlineBadge').textContent=driverOnline?'ONLINE':'OFFLINE';$('driverOnlineBadge').className='pill '+(driverOnline?'online':'offline')}
-function watchDriverOrders(){stopWatch();if(isFirebase){const q=query(collection(db,'orders'),where('status','in',['pending','accepted']),orderBy('createdAt','desc'),limit(50));unsubs.push(onSnapshot(q,s=>{const arr=s.docs.map(d=>({id:d.id,...d.data()})).filter(o=>driverOnline||o.status==='accepted');renderOrders('driverOrders',arr,false,'driver')}))}else $('driverOrders').innerHTML='<div class="card warn"><b>Firebase config paste cheyali</b><p class="muted">Real-time driver orders Firebase tarvata work అవుతాయి.</p></div>'}
-function watchDriverTrips(){if(!isFirebase)return;const q=query(collection(db,'orders'),where('status','==','completed'),orderBy('createdAt','desc'),limit(50));unsubs.push(onSnapshot(q,s=>{const arr=s.docs.map(d=>({id:d.id,...d.data()}));$('dTrips').textContent=arr.length;$('dEarn').textContent=money(arr.reduce((a,o)=>a+(Number(o.total||0)*CONFIG.commission),0));$('dTotal').textContent=arr.length;$('driverTripsList').innerHTML=arr.length?arr.map(o=>orderHTML(o,'driver')).join(''):'<div class="card">No trips</div>'}))}
-window.acceptOrder=async id=>{registerDriver(false);await updateOrder(id,'accepted',{driverName:localStorage.getItem('driver_name')||'Driver',driverPhone:localStorage.getItem('driver_phone')||''});toast('Order accepted')}
-window.updateOrder=async(id,status,extra={})=>{try{if(!isFirebase)throw new Error('Firebase required');await updateDoc(doc(db,'orders',id),{status,...extra,updatedAt:serverTimestamp()});toast('Updated: '+status)}catch(e){toast(e.message)}}
-function watchAdminOrders(){stopWatch();if(isFirebase){const q=query(collection(db,'orders'),orderBy('createdAt','desc'),limit(100));unsubs.push(onSnapshot(q,s=>{const arr=s.docs.map(d=>({id:d.id,...d.data()}));const rev=arr.reduce((a,o)=>a+Number(o.total||0),0);$('aOrders').textContent=arr.length;$('aRevenue').textContent=money(rev);$('aProfit').textContent=money(rev*.25);renderOrders('adminOrders',arr,true,'admin')}))}else{$('adminOrders').innerHTML='<div class="card warn"><b>Firebase config missing</b><p class="muted">Config paste cheyandi.</p></div>'}}
-window.exportCSV=()=>{const arr=lastOrders.length?lastOrders:JSON.parse(localStorage.getItem('moveit_orders')||'[]');if(!arr.length){toast('No data');return}const rows=['id,status,service,name,phone,pickup,drop,distance,total,notes'];arr.forEach(o=>rows.push([o.id,o.status,o.service,o.name,o.phone,o.pickup,o.drop,o.distance,o.total,(o.notes||'').replaceAll(',',' ')].map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')));const blob=new Blob([rows.join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='moveit_orders.csv';a.click()}
-window.whatsappOffice=(msg)=>{window.open(`https://wa.me/${CONFIG.officePhone}?text=${msg||encodeURIComponent('Hi MoveIt, help kavali')}`,'_blank')}
-window.callOffice=()=>{location.href='tel:+'+CONFIG.officePhone}
-window.clearLocalOnly=()=>{localStorage.removeItem('moveit_role');location.reload()}
-</script>
+<!-- Customer Bookings -->
+<div class="screen" id="customerBookings">
+  <div class="form-title">📋 My Orders</div>
+  <div id="customerBookingsList"></div>
+</div>
 
-<!--
-FIREBASE RULES (testing): Firebase Console > Firestore Database > Rules
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /orders/{orderId} {
-      allow read, create, update: if request.auth != null;
-      allow delete: if false;
+<!-- ============================================ -->
+<!-- ============== DRIVER SCREENS ============== -->
+<!-- ============================================ -->
+
+<div class="screen" id="driverHome">
+  
+  <div style="background:#FFF9E6; padding:12px; border-radius:10px; margin-bottom:15px; font-size:12px; color:#6B5500;" id="driverWelcome">
+    👋 Welcome <strong id="driverNameDisplay">Driver</strong>! Ready to earn?
+  </div>
+  
+  <div class="status-card" id="statusCard">
+    <div class="status-icon-d" id="statusIcon">🟢</div>
+    <div class="status-title" id="statusTitle">ONLINE</div>
+    <div class="status-desc" id="statusDesc">Ready to accept orders</div>
+    <button class="toggle-btn" onclick="toggleDriverStatus()">Go Offline</button>
+  </div>
+  
+  <div class="section-title">💰 Today's Earnings</div>
+  <div class="earnings-grid">
+    <div class="earning-box">
+      <div class="earning-num" id="todayEarnings">₹0</div>
+      <div class="earning-label">Today</div>
+    </div>
+    <div class="earning-box">
+      <div class="earning-num" id="todayTrips">0</div>
+      <div class="earning-label">Trips</div>
+    </div>
+    <div class="earning-box">
+      <div class="earning-num" id="totalEarn">₹0</div>
+      <div class="earning-label">Total</div>
+    </div>
+  </div>
+  
+  <div id="newOrderContainer"></div>
+  
+  <div style="background:#FFF9E6; border:1px dashed #FFB400; border-radius:10px; padding:12px; margin-top:15px;">
+    <div style="font-size:12px; color:#B8860B; font-weight:700; margin-bottom:8px;">
+      🎮 Demo Mode:
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+      <button onclick="simulateOrder('logistics')" style="background:#FF6B35; color:white; border:none; padding:8px; border-radius:8px; font-size:11px; font-weight:700;">🚐 Shifting</button>
+      <button onclick="simulateOrder('bike')" style="background:#2196F3; color:white; border:none; padding:8px; border-radius:8px; font-size:11px; font-weight:700;">🏍️ Bike</button>
+      <button onclick="simulateOrder('anything')" style="background:#6A11CB; color:white; border:none; padding:8px; border-radius:8px; font-size:11px; font-weight:700;">✨ Anything</button>
+      <button onclick="completeTrip()" style="background:#4CAF50; color:white; border:none; padding:8px; border-radius:8px; font-size:11px; font-weight:700;">✓ Complete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- =============== ADMIN SCREENS ============== -->
+<!-- ============================================ -->
+
+<div class="screen" id="adminDashboard">
+  
+  <div class="admin-stats-grid">
+    <div class="admin-stat-card stat-orange">
+      <div class="admin-stat-icon">📦</div>
+      <div class="admin-stat-label">Today Orders</div>
+      <div class="admin-stat-value" id="adminTotalOrders">0</div>
+      <div class="admin-stat-change">All time</div>
+    </div>
+    <div class="admin-stat-card stat-green">
+      <div class="admin-stat-icon">💰</div>
+      <div class="admin-stat-label">Revenue</div>
+      <div class="admin-stat-value" id="adminRevenue">₹0</div>
+      <div class="admin-stat-change">Total earned</div>
+    </div>
+    <div class="admin-stat-card stat-blue">
+      <div class="admin-stat-icon">👥</div>
+      <div class="admin-stat-label">Customers</div>
+      <div class="admin-stat-value" id="adminCustomers">0</div>
+      <div class="admin-stat-change">Unique users</div>
+    </div>
+    <div class="admin-stat-card stat-purple">
+      <div class="admin-stat-icon">💵</div>
+      <div class="admin-stat-label">Profit</div>
+      <div class="admin-stat-value" id="adminProfit">₹0</div>
+      <div class="admin-stat-change">25% margin</div>
+    </div>
+  </div>
+  
+  <div class="section-title">📋 All Orders</div>
+  <div id="adminOrdersList"></div>
+  
+  <div style="margin-top:20px; display:flex; gap:8px;">
+    <button class="btn btn-primary" onclick="exportData()">📥 Export CSV</button>
+    <button class="btn btn-secondary" onclick="loadAdminData()">🔄 Refresh</button>
+    <button class="btn btn-secondary" onclick="clearAdminData()">🗑️ Clear</button>
+  </div>
+</div>
+
+<!-- ===== BOTTOM NAVIGATION (Dynamic) ===== -->
+<div class="bottom-nav" id="bottomNav" style="display:none;">
+  <div class="nav-item active" id="nav1" onclick="navTap(0)">
+    <div class="nav-icon" id="navIcon1">🏠</div>
+    <div class="nav-label" id="navLabel1">Home</div>
+  </div>
+  <div class="nav-item" id="nav2" onclick="navTap(1)">
+    <div class="nav-icon" id="navIcon2">📋</div>
+    <div class="nav-label" id="navLabel2">Orders</div>
+  </div>
+  <div class="nav-item" id="nav3" onclick="navTap(2)">
+    <div class="nav-icon" id="navIcon3">💬</div>
+    <div class="nav-label" id="navLabel3">Support</div>
+  </div>
+  <div class="nav-item" id="nav4" onclick="navTap(3)">
+    <div class="nav-icon" id="navIcon4">↻</div>
+    <div class="nav-label" id="navLabel4">Switch</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ===== CONFIG =====
+  const CONFIG = {
+    officePhone: '919876543210', // ⚠️ CHANGE THIS!
+    adminPassword: 'moveit2026', // ⚠️ CHANGE THIS!
+    minPrice: 50,
+    // Firebase optional: paste your Firebase config here to make all phones share orders live.
+    // Keep this as null and app will safely work in local/demo mode.
+    firebaseConfig: null
+    /* Example:
+    firebaseConfig: {
+      apiKey: 'YOUR_API_KEY',
+      authDomain: 'YOUR_PROJECT.firebaseapp.com',
+      projectId: 'YOUR_PROJECT',
+      storageBucket: 'YOUR_PROJECT.appspot.com',
+      messagingSenderId: 'SENDER_ID',
+      appId: 'APP_ID'
+    }
+    */
+  };
+  
+  let currentRole = null;
+  let currentBooking = null;
+  let activeTrip = null;
+  let isDriverOnline = true;
+  let selectedCategory = null;
+
+  let db = null;
+  let isCloudReady = false;
+
+  function initFirebaseIfConfigured() {
+    try {
+      if (!CONFIG.firebaseConfig || !CONFIG.firebaseConfig.apiKey) return;
+      if (!window.firebase) return;
+      if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebaseConfig);
+      db = firebase.firestore();
+      isCloudReady = true;
+      listenCloudBookings();
+      showToast('☁️ Live sync ON');
+    } catch (err) {
+      console.warn('Firebase not connected:', err);
+      isCloudReady = false;
     }
   }
-}
--->
+
+  function listenCloudBookings() {
+    if (!db) return;
+    db.collection('bookings').orderBy('date', 'desc').limit(100).onSnapshot((snap) => {
+      const cloudBookings = [];
+      snap.forEach(doc => cloudBookings.push({ ...doc.data(), id: doc.id }));
+      if (cloudBookings.length) {
+        localStorage.setItem('moveit_bookings', JSON.stringify(cloudBookings));
+        if (currentRole === 'admin') loadAdminData();
+        if (currentRole === 'customer' && document.getElementById('customerBookings').classList.contains('active')) loadCustomerBookings();
+      }
+    }, (err) => console.warn('Cloud listen error:', err));
+  }
+
+  function syncBookingToCloud(booking) {
+    if (!db || !booking || !booking.id) return;
+    db.collection('bookings').doc(booking.id).set(booking, { merge: true }).catch(err => console.warn('Cloud save error:', err));
+  }
+
+  function updateBookingStatus(orderId, status) {
+    if (!orderId) return;
+    const bookings = getBookings();
+    const updated = bookings.map(b => b.id === orderId ? { ...b, status } : b);
+    localStorage.setItem('moveit_bookings', JSON.stringify(updated));
+    const booking = updated.find(b => b.id === orderId);
+    if (booking) syncBookingToCloud(booking);
+  }
+
+  
+  // ===== INITIALIZATION =====
+  window.addEventListener('load', () => {
+    // Check if user has previous role saved
+    const savedRole = localStorage.getItem('moveit_role');
+    if (savedRole) {
+      // Show role screen first anyway
+    }
+    document.getElementById('officeNum').textContent = '+91 ' + CONFIG.officePhone.slice(2);
+    initFirebaseIfConfigured();
+    const user = JSON.parse(localStorage.getItem('moveit_user') || 'null');
+    if (user && user.name) document.getElementById('greetUser').textContent = `నమస్కారం ${user.name}! 🙏`;
+  });
+  
+  // ===== ROLE SELECTION =====
+  function selectRole(role) {
+    currentRole = role;
+    localStorage.setItem('moveit_role', role);
+    
+    // Hide role screen
+    document.getElementById('roleScreen').classList.remove('active');
+    document.getElementById('roleScreen').style.display = 'none';
+    
+    // Show appropriate header & nav
+    if (role === 'customer') {
+      document.getElementById('customerHeader').style.display = 'block';
+      setupCustomerNav();
+      showScreen('customerHome');
+    } else if (role === 'driver') {
+      document.getElementById('driverHeader').style.display = 'block';
+      setupDriverNav();
+      
+      // Check if driver name exists
+      const driverName = localStorage.getItem('driver_name');
+      if (!driverName) {
+        const name = prompt('Driver Name?');
+        if (name) localStorage.setItem('driver_name', name);
+      }
+      document.getElementById('driverNameDisplay').textContent = localStorage.getItem('driver_name') || 'Driver';
+      
+      showScreen('driverHome');
+      updateDriverStats();
+    }
+  }
+  
+  function adminLogin() {
+    const pwd = prompt('🔐 Admin Password:');
+    if (pwd !== CONFIG.adminPassword) {
+      showToast('❌ Wrong password!');
+      return;
+    }
+    
+    currentRole = 'admin';
+    document.getElementById('roleScreen').classList.remove('active');
+    document.getElementById('roleScreen').style.display = 'none';
+    document.getElementById('adminHeader').style.display = 'block';
+    setupAdminNav();
+    showScreen('adminDashboard');
+    loadAdminData();
+  }
+  
+  function backToRoles() {
+    // Hide all headers
+    document.getElementById('customerHeader').style.display = 'none';
+    document.getElementById('driverHeader').style.display = 'none';
+    document.getElementById('adminHeader').style.display = 'none';
+    document.getElementById('bottomNav').style.display = 'none';
+    
+    // Hide all screens
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active');
+      s.style.display = 'none';
+    });
+    
+    // Show role screen
+    const roleScreen = document.getElementById('roleScreen');
+    roleScreen.style.display = 'block';
+    roleScreen.classList.add('active');
+    
+    currentRole = null;
+  }
+  
+  // ===== NAV SETUP =====
+  function setupCustomerNav() {
+    document.getElementById('bottomNav').style.display = 'flex';
+    document.getElementById('navIcon1').textContent = '🏠';
+    document.getElementById('navLabel1').textContent = 'Home';
+    document.getElementById('navIcon2').textContent = '📋';
+    document.getElementById('navLabel2').textContent = 'My Orders';
+    document.getElementById('navIcon3').textContent = '💬';
+    document.getElementById('navLabel3').textContent = 'WhatsApp';
+    document.getElementById('navIcon4').textContent = '↻';
+    document.getElementById('navLabel4').textContent = 'Switch';
+  }
+  
+  function setupDriverNav() {
+    document.getElementById('bottomNav').style.display = 'flex';
+    document.getElementById('navIcon1').textContent = '🏠';
+    document.getElementById('navLabel1').textContent = 'Home';
+    document.getElementById('navIcon2').textContent = '💰';
+    document.getElementById('navLabel2').textContent = 'Earnings';
+    document.getElementById('navIcon3').textContent = '📞';
+    document.getElementById('navLabel3').textContent = 'Office';
+    document.getElementById('navIcon4').textContent = '↻';
+    document.getElementById('navLabel4').textContent = 'Switch';
+  }
+  
+  function setupAdminNav() {
+    document.getElementById('bottomNav').style.display = 'flex';
+    document.getElementById('navIcon1').textContent = '📊';
+    document.getElementById('navLabel1').textContent = 'Dashboard';
+    document.getElementById('navIcon2').textContent = '📥';
+    document.getElementById('navLabel2').textContent = 'Export';
+    document.getElementById('navIcon3').textContent = '⚙️';
+    document.getElementById('navLabel3').textContent = 'Settings';
+    document.getElementById('navIcon4').textContent = '↻';
+    document.getElementById('navLabel4').textContent = 'Switch';
+  }
+  
+  function navTap(index) {
+    if (currentRole === 'customer') {
+      if (index === 0) showScreen('customerHome');
+      else if (index === 1) { loadCustomerBookings(); showScreen('customerBookings'); }
+      else if (index === 2) openWhatsApp();
+      else if (index === 3) backToRoles();
+    } else if (currentRole === 'driver') {
+      if (index === 0) showScreen('driverHome');
+      else if (index === 1) showToast('💰 Total earnings: ₹' + getDriverEarnings());
+      else if (index === 2) callOffice();
+      else if (index === 3) backToRoles();
+    } else if (currentRole === 'admin') {
+      if (index === 0) { showScreen('adminDashboard'); loadAdminData(); }
+      else if (index === 1) exportData();
+      else if (index === 2) showToast('⚙️ Settings: Edit CONFIG in code');
+      else if (index === 3) backToRoles();
+    }
+  }
+  
+  // ===== SCREEN NAV =====
+  function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active');
+      s.style.display = 'none';
+    });
+    
+    const screen = document.getElementById(screenId);
+    screen.style.display = 'block';
+    screen.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  // ============================================
+  // CUSTOMER FUNCTIONS
+  // ============================================
+  
+  function quickAnythingOrder(category) {
+    selectedCategory = category;
+    showScreen('anythingOrder');
+    setTimeout(() => {
+      const pickup = document.getElementById('anyPickup');
+      const map = {
+        'Vegetables': 'Rythu Bazaar',
+        'Milk & Dairy': 'Local Dairy',
+        'Medicine': 'Nearest Pharmacy',
+        'Grocery': 'Kirana Shop',
+        'Fruits': 'Fruit Market',
+        'Food/Hotel': 'Hotel',
+        'Bakery': 'Bakery',
+        'Cylinder': 'Gas Agency'
+      };
+      if (map[category] && !pickup.value) pickup.value = map[category];
+    }, 200);
+  }
+  
+  function addItem() {
+    const list = document.getElementById('anyItemsList');
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.innerHTML = `
+      <input type="text" class="item-name" placeholder="Item">
+      <input type="text" class="item-qty" placeholder="Qty">
+      <input type="number" class="item-price" placeholder="₹ est.">
+      <button class="item-remove" onclick="removeItem(this)">×</button>
+    `;
+    list.appendChild(row);
+  }
+  
+  function removeItem(btn) {
+    const list = document.getElementById('anyItemsList');
+    if (list.children.length > 1) btn.parentElement.remove();
+  }
+  
+  function selectVehicle(el) {
+    document.querySelectorAll('.vehicle-option').forEach(v => v.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+  
+  function calculateAnythingQuote() {
+    const pickup = document.getElementById('anyPickup').value.trim();
+    const drop = document.getElementById('anyDrop').value.trim();
+    const distance = parseInt(document.getElementById('anyDistance').value) || 0;
+    const phone = document.getElementById('anyPhone').value.trim();
+    const name = document.getElementById('anyName').value.trim();
+    
+    if (!pickup) { showToast('❌ Pickup shop enter cheyandi'); return; }
+    if (!drop) { showToast('❌ Drop address enter cheyandi'); return; }
+    if (!phone || phone.length !== 10) { showToast('❌ Valid phone enter cheyandi'); return; }
+    if (!name) { showToast('❌ Name enter cheyandi'); return; }
+    
+    const items = [];
+    let totalItemCost = 0;
+    document.querySelectorAll('#anyItemsList .item-row').forEach(row => {
+      const name = row.querySelector('.item-name').value.trim();
+      const qty = row.querySelector('.item-qty').value.trim();
+      const price = parseFloat(row.querySelector('.item-price').value) || 0;
+      if (name && qty) {
+        items.push({ name, qty, price });
+        totalItemCost += price;
+      }
+    });
+    
+    if (items.length === 0) { showToast('❌ At least 1 item add cheyandi'); return; }
+    
+    const deliveryFee = 30 + (distance * 10);
+    const serviceCharge = 10;
+    const bookings = getBookings();
+    const isFirstOrder = bookings.length === 0;
+    const discount = isFirstOrder ? 30 : 0;
+    const totalToPay = Math.max(50, totalItemCost + deliveryFee + serviceCharge - discount);
+    
+    currentBooking = {
+      id: 'AN' + Date.now().toString().slice(-6),
+      type: 'anything',
+      service: selectedCategory || 'Anything Order',
+      pickup, drop, items, distance, phone, name,
+      itemCost: totalItemCost, deliveryFee, serviceCharge,
+      discount, total: totalToPay,
+      date: new Date().toISOString(),
+      status: 'pending'
+    };
+    
+    displayQuote();
+  }
+  
+  function calculateQuote() {
+    const pickup = document.getElementById('pickupAddr').value.trim();
+    const drop = document.getElementById('dropAddr').value.trim();
+    const items = document.getElementById('itemsList').value.trim();
+    const distance = parseInt(document.getElementById('distance').value) || 0;
+    const phone = document.getElementById('customerPhone').value.trim();
+    const name = document.getElementById('customerName').value.trim();
+    
+    if (!pickup || !drop || !items) { showToast('❌ Fields fill cheyandi'); return; }
+    if (!phone || phone.length !== 10) { showToast('❌ Valid phone'); return; }
+    if (!name) { showToast('❌ Name enter chey'); return; }
+    
+    const sel = document.querySelector('#bookLogistics .vehicle-option.selected');
+    const vehicleType = sel.dataset.type;
+    const basePrice = parseInt(sel.dataset.base);
+    const perKm = parseInt(sel.dataset.perkm);
+    
+    const helperCharge = vehicleType === 'Bike' ? 0 : (vehicleType === 'Big Tempo' ? 200 : 100);
+    const distanceCharge = distance * perKm;
+    const subtotal = basePrice + helperCharge + distanceCharge;
+    const isFirst = getBookings().length === 0;
+    const discount = isFirst ? 50 : 0;
+    const total = Math.max(CONFIG.minPrice, subtotal - discount);
+    
+    currentBooking = {
+      id: 'MV' + Date.now().toString().slice(-6),
+      type: 'logistics', service: vehicleType,
+      pickup, drop, items, distance, phone, name,
+      basePrice, helperCharge, distanceCharge,
+      discount, total,
+      date: new Date().toISOString(),
+      status: 'pending'
+    };
+    displayQuote();
+  }
+  
+  function calculateBikeQuote() {
+    const pickup = document.getElementById('bikePickup').value.trim();
+    const drop = document.getElementById('bikeDrop').value.trim();
+    const distance = parseInt(document.getElementById('bikeDistance').value) || 0;
+    const phone = document.getElementById('bikePhone').value.trim();
+    const name = document.getElementById('bikeName').value.trim();
+    
+    if (!pickup || !drop) { showToast('❌ Pickup & Drop'); return; }
+    if (!phone || phone.length !== 10) { showToast('❌ Valid phone'); return; }
+    if (!name) { showToast('❌ Name'); return; }
+    
+    const basePrice = 15;
+    const distanceCharge = distance * 10;
+    const subtotal = basePrice + distanceCharge;
+    const isFirst = getBookings().length === 0;
+    const discount = isFirst ? 25 : 0;
+    const total = Math.max(25, subtotal - discount);
+    
+    currentBooking = {
+      id: 'BK' + Date.now().toString().slice(-6),
+      type: 'bike', service: 'Bike Taxi',
+      pickup, drop, distance, phone, name,
+      basePrice, distanceCharge, discount, total,
+      date: new Date().toISOString(),
+      status: 'pending'
+    };
+    displayQuote();
+  }
+  
+  function displayQuote() {
+    const b = currentBooking;
+    let html = '';
+    
+    if (b.type === 'anything') {
+      let itemsHtml = '';
+      b.items.forEach(i => {
+        itemsHtml += `<div style="font-size:12px; color:#555; margin:3px 0;">• ${i.name} (${i.qty}) ${i.price > 0 ? '₹' + i.price : ''}</div>`;
+      });
+      html = `
+        <div style="font-size:16px; font-weight:700; margin-bottom:10px;">✨ ${b.service}</div>
+        <div style="font-size:12px; color:#666; margin-bottom:10px;">🏪 ${b.pickup}<br>🎯 ${b.drop}</div>
+        <div style="background:white; padding:10px; border-radius:8px; margin-bottom:10px;">
+          <div style="font-weight:700; font-size:12px; margin-bottom:5px;">📦 Items:</div>
+          ${itemsHtml}
+        </div>
+        <div class="quote-row"><span>Items cost</span><span>₹${b.itemCost}</span></div>
+        <div class="quote-row"><span>Delivery (${b.distance}km)</span><span>₹${b.deliveryFee}</span></div>
+        <div class="quote-row"><span>Service</span><span>₹${b.serviceCharge}</span></div>
+        ${b.discount > 0 ? `<div class="quote-row quote-discount"><span>🎁 Discount</span><span>-₹${b.discount}</span></div>` : ''}
+        <div class="quote-row"><span>TOTAL</span><span>₹${b.total}</span></div>
+      `;
+    } else if (b.type === 'logistics') {
+      html = `
+        <div style="font-size:16px; font-weight:700; margin-bottom:10px;">📦 ${b.service}</div>
+        <div style="font-size:12px; color:#666; margin-bottom:15px;">📍 ${b.pickup}<br>🎯 ${b.drop}<br>📦 ${b.items}</div>
+        <div class="quote-row"><span>Base</span><span>₹${b.basePrice}</span></div>
+        ${b.helperCharge > 0 ? `<div class="quote-row"><span>Helper</span><span>₹${b.helperCharge}</span></div>` : ''}
+        <div class="quote-row"><span>Distance</span><span>₹${b.distanceCharge}</span></div>
+        ${b.discount > 0 ? `<div class="quote-row quote-discount"><span>🎁 Discount</span><span>-₹${b.discount}</span></div>` : ''}
+        <div class="quote-row"><span>TOTAL</span><span>₹${b.total}</span></div>
+      `;
+    } else {
+      html = `
+        <div style="font-size:16px; font-weight:700; margin-bottom:10px;">🏍️ Bike Taxi</div>
+        <div style="font-size:12px; color:#666; margin-bottom:15px;">📍 ${b.pickup}<br>🎯 ${b.drop}</div>
+        <div class="quote-row"><span>Base</span><span>₹${b.basePrice}</span></div>
+        <div class="quote-row"><span>Distance</span><span>₹${b.distanceCharge}</span></div>
+        ${b.discount > 0 ? `<div class="quote-row quote-discount"><span>🎁 Discount</span><span>-₹${b.discount}</span></div>` : ''}
+        <div class="quote-row"><span>TOTAL</span><span>₹${b.total}</span></div>
+      `;
+    }
+    
+    document.getElementById('quoteDetails').innerHTML = html;
+    showScreen('quoteScreen');
+  }
+  
+  function confirmBooking() {
+    if (!currentBooking) return;
+    currentBooking.status = 'confirmed';
+    saveBooking(currentBooking);
+    saveUserData(currentBooking.name, currentBooking.phone);
+    document.getElementById('newOrderId').textContent = currentBooking.id;
+    showScreen('successScreen');
+    showToast('✅ Order confirmed!');
+  }
+  
+  function sendToWhatsApp() {
+    if (!currentBooking) return;
+    const b = currentBooking;
+    let message = '';
+    
+    if (b.type === 'anything') {
+      let itemsList = '';
+      b.items.forEach((i, idx) => {
+        itemsList += `${idx+1}. ${i.name} - ${i.qty}${i.price > 0 ? ' (₹' + i.price + ')' : ''}\n`;
+      });
+      message = `✨ *MoveIt - Anything Order*\n\n👤 ${b.name}\n📱 ${b.phone}\n\n📦 ${b.service}\n🏪 ${b.pickup}\n🎯 ${b.drop}\n📏 ${b.distance} km\n\n📋 *Items:*\n${itemsList}\n💰 *Total: ₹${b.total}*\n\nPampandi please! 🙏`;
+    } else if (b.type === 'logistics') {
+      message = `🚐 *MoveIt - Shifting*\n\n👤 ${b.name} | 📱 ${b.phone}\n\n📦 ${b.service}\n📍 ${b.pickup}\n🎯 ${b.drop}\n📋 ${b.items}\n📏 ${b.distance} km\n\n💰 *Total: ₹${b.total}* 🙏`;
+    } else {
+      message = `🏍️ *MoveIt - Bike Taxi*\n\n👤 ${b.name} | 📱 ${b.phone}\n\n📍 ${b.pickup}\n🎯 ${b.drop}\n📏 ${b.distance} km\n\n💰 *₹${b.total}* 🙏`;
+    }
+    
+    confirmBooking();
+    window.open(`https://wa.me/${CONFIG.officePhone}?text=${encodeURIComponent(message)}`, '_blank');
+  }
+  
+  function sendBookingWhatsApp() {
+    if (currentBooking) sendToWhatsApp();
+  }
+  
+  function openWhatsApp() {
+    window.open(`https://wa.me/${CONFIG.officePhone}?text=${encodeURIComponent('Hi MoveIt! Help kavali...')}`, '_blank');
+  }
+  
+  function callOffice() {
+    window.location.href = `tel:+${CONFIG.officePhone}`;
+  }
+  
+  // ===== STORAGE =====
+  function saveBooking(booking) {
+    const bookings = getBookings().filter(b => b.id !== booking.id);
+    bookings.unshift(booking);
+    localStorage.setItem('moveit_bookings', JSON.stringify(bookings));
+    syncBookingToCloud(booking);
+  }
+  
+  function getBookings() {
+    try { return JSON.parse(localStorage.getItem('moveit_bookings') || '[]'); }
+    catch(e) { localStorage.setItem('moveit_bookings', '[]'); return []; }
+  }
+  
+  function saveUserData(name, phone) {
+    localStorage.setItem('moveit_user', JSON.stringify({ name, phone }));
+    document.getElementById('greetUser').textContent = `నమస్కారం ${name}! 🙏`;
+  }
+  
+  function loadCustomerBookings() {
+    const bookings = getBookings();
+    const list = document.getElementById('customerBookingsList');
+    
+    if (bookings.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><div>No orders yet</div></div>`;
+      return;
+    }
+    
+    let html = '';
+    bookings.forEach(b => {
+      const icon = b.type === 'anything' ? '✨' : (b.type === 'bike' ? '🏍️' : '🛺');
+      const date = new Date(b.date).toLocaleDateString('en-IN');
+      html += `<div class="booking-item">
+        <div class="booking-icon-wrap">${icon}</div>
+        <div class="booking-content">
+          <div class="booking-name">${b.service}</div>
+          <div class="booking-detail">${b.pickup} → ${b.drop}</div>
+          <div class="booking-detail">${date} • #${b.id}</div>
+        </div>
+        <div class="booking-amount">
+          <div class="booking-price">₹${b.total}</div>
+          <div class="booking-status status-${b.status}">${b.status}</div>
+        </div>
+      </div>`;
+    });
+    list.innerHTML = html;
+  }
+  
+  // ============================================
+  // DRIVER FUNCTIONS
+  // ============================================
+  
+  function toggleDriverStatus() {
+    isDriverOnline = !isDriverOnline;
+    const card = document.getElementById('statusCard');
+    const icon = document.getElementById('statusIcon');
+    const title = document.getElementById('statusTitle');
+    const desc = document.getElementById('statusDesc');
+    const btn = card.querySelector('.toggle-btn');
+    
+    if (isDriverOnline) {
+      card.classList.remove('offline');
+      icon.textContent = '🟢';
+      title.textContent = 'ONLINE';
+      desc.textContent = 'Ready to accept orders';
+      btn.textContent = 'Go Offline';
+      showToast('✅ ONLINE');
+    } else {
+      card.classList.add('offline');
+      icon.textContent = '⚫';
+      title.textContent = 'OFFLINE';
+      desc.textContent = 'Not receiving orders';
+      btn.textContent = 'Go Online';
+      showToast('⏸️ OFFLINE');
+      document.getElementById('newOrderContainer').innerHTML = '';
+    }
+  }
+  
+  function simulateOrder(type) {
+    if (!isDriverOnline) { showToast('❌ Go ONLINE first!'); return; }
+    if (activeTrip) { showToast('❌ Complete current trip!'); return; }
+    
+    // Fetch real bookings from customer side
+    const bookings = getBookings().filter(b => b.status === 'confirmed');
+    
+    let order;
+    if (bookings.length > 0 && Math.random() > 0.5) {
+      // Use real customer booking
+      const b = bookings[0];
+      order = {
+        type: b.type,
+        customerName: b.name,
+        customerPhone: b.phone,
+        customerRating: 4.5 + Math.random() * 0.5,
+        pickup: b.pickup,
+        drop: b.drop,
+        items: Array.isArray(b.items) ? b.items.map(i => `${i.name} ${i.qty || ''}`).join(', ') : (b.items || ''),
+        orderId: b.id,
+        service: b.service,
+        distance: b.distance,
+        totalFare: b.total,
+        icon: b.type === 'anything' ? '✨' : (b.type === 'bike' ? '🏍️' : '🛺')
+      };
+    } else {
+      // Demo sample
+      const samples = {
+        logistics: { type: 'logistics', customerName: 'Ramesh', customerPhone: '9876543210', customerRating: 4.8, pickup: 'Sir CRR College', drop: 'Railway Station', items: '1 bed, 2 trunks', service: 'Auto + Helper', distance: 3, totalFare: 400, icon: '🛺' },
+        bike: { type: 'bike', customerName: 'Lakshmi', customerPhone: '9988776655', customerRating: 4.9, pickup: 'Main Bazaar', drop: 'Bus Stand', service: 'Bike Taxi', distance: 2, totalFare: 50, icon: '🏍️' },
+        anything: { type: 'anything', customerName: 'Padma', customerPhone: '9123456789', customerRating: 4.7, pickup: 'Rythu Bazaar', drop: 'LIC Colony', items: '1kg tomato, 2kg onion', service: 'Anything Order', distance: 2, totalFare: 200, icon: '✨' }
+      };
+      order = samples[type];
+    }
+    
+    order.id = 'ORD' + Date.now().toString().slice(-6);
+    const commission = 0.65;
+    order.driverEarning = Math.round(order.totalFare * commission);
+    
+    displayNewOrder(order);
+  }
+  
+  function displayNewOrder(order) {
+    const html = `
+      <div class="new-order-card">
+        <div>
+          <span class="urgent-badge">🔔 NEW ORDER</span>
+          <span class="order-timer" id="orderTimer">30s</span>
+        </div>
+        <div style="margin:10px 0;">
+          <div style="font-weight:700; font-size:14px;">${order.customerName}</div>
+          <div style="font-size:11px; color:#888;">⭐ ${order.customerRating ? order.customerRating.toFixed(1) : '5.0'} • ${order.customerPhone}</div>
+        </div>
+        <div class="route-box">
+          <div class="route-point">
+            <div class="route-icon pickup-icon">↑</div>
+            <div class="route-text"><strong>Pickup:</strong><br>${order.pickup}</div>
+          </div>
+          <div class="route-line"></div>
+          <div class="route-point">
+            <div class="route-icon drop-icon">↓</div>
+            <div class="route-text"><strong>Drop:</strong><br>${order.drop}</div>
+          </div>
+        </div>
+        ${order.items ? `<div style="background:#FFF8F3; padding:8px; border-radius:8px; margin:8px 0; font-size:11px;"><strong>📦 ${typeof order.items === 'string' ? order.items : order.items.map(i => i.name).join(', ')}</strong></div>` : ''}
+        <div class="earnings-display">
+          <div>
+            <div style="font-size:11px; opacity:0.9;">You Earn</div>
+            <div style="font-size:22px; font-weight:900;">₹${order.driverEarning}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:11px; opacity:0.9;">Total Fare</div>
+            <div style="font-size:14px;">₹${order.totalFare}</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-action btn-reject" onclick="rejectOrder()">Reject</button>
+          <button class="btn-action btn-accept" onclick='acceptOrder(${JSON.stringify(order).replace(/'/g, "\\'")})'>Accept ✓</button>
+        </div>
+      </div>
+    `;
+    
+    document.getElementById('newOrderContainer').innerHTML = html;
+    
+    let seconds = 30;
+    window.orderTimerInterval = setInterval(() => {
+      seconds--;
+      const t = document.getElementById('orderTimer');
+      if (t) t.textContent = seconds + 's';
+      if (seconds <= 0) {
+        clearInterval(window.orderTimerInterval);
+        rejectOrder('⏰ Timeout!');
+      }
+    }, 1000);
+  }
+  
+  function rejectOrder(msg) {
+    clearInterval(window.orderTimerInterval);
+    document.getElementById('newOrderContainer').innerHTML = '';
+    showToast(msg || '❌ Rejected');
+  }
+  
+  function acceptOrder(order) {
+    clearInterval(window.orderTimerInterval);
+    document.getElementById('newOrderContainer').innerHTML = `
+      <div style="background:linear-gradient(135deg, #4CAF50, #2E7D32); color:white; padding:15px; border-radius:12px; margin-bottom:15px; text-align:center;">
+        <div style="font-size:18px; font-weight:900; margin-bottom:5px;">✅ Order Accepted!</div>
+        <div style="font-size:12px;">${order.pickup} → ${order.drop}</div>
+        <div style="margin-top:10px;">
+          <a href="tel:+91${order.customerPhone}" style="background:white; color:#2E7D32; padding:8px 20px; border-radius:20px; text-decoration:none; font-weight:700; font-size:13px; display:inline-block; margin:3px;">📞 Call</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(order.pickup)}" target="_blank" style="background:#FF6B35; color:white; padding:8px 20px; border-radius:20px; text-decoration:none; font-weight:700; font-size:13px; display:inline-block; margin:3px;">🗺️ Navigate</a>
+        </div>
+      </div>
+    `;
+    activeTrip = order;
+    updateBookingStatus(order.orderId, 'active');
+    showToast('✅ Order accepted!');
+  }
+  
+  function completeTrip() {
+    if (!activeTrip) { showToast('❌ No active trip'); return; }
+    
+    const trips = JSON.parse(localStorage.getItem('driver_trips') || '[]');
+    trips.unshift({ ...activeTrip, completedAt: new Date().toISOString() });
+    localStorage.setItem('driver_trips', JSON.stringify(trips));
+    
+    updateBookingStatus(activeTrip.orderId, 'completed');
+    showToast('🎉 Trip done! Earned ₹' + activeTrip.driverEarning);
+    activeTrip = null;
+    document.getElementById('newOrderContainer').innerHTML = '';
+    updateDriverStats();
+  }
+  
+  function updateDriverStats() {
+    const trips = JSON.parse(localStorage.getItem('driver_trips') || '[]');
+    const today = new Date().toDateString();
+    const todayTrips = trips.filter(t => new Date(t.completedAt).toDateString() === today);
+    const todayEarn = todayTrips.reduce((s, t) => s + t.driverEarning, 0);
+    const total = trips.reduce((s, t) => s + t.driverEarning, 0);
+    
+    document.getElementById('todayEarnings').textContent = '₹' + todayEarn;
+    document.getElementById('todayTrips').textContent = todayTrips.length;
+    document.getElementById('totalEarn').textContent = '₹' + total;
+  }
+  
+  function getDriverEarnings() {
+    const trips = JSON.parse(localStorage.getItem('driver_trips') || '[]');
+    return trips.reduce((s, t) => s + t.driverEarning, 0);
+  }
+  
+  // ============================================
+  // ADMIN FUNCTIONS
+  // ============================================
+  
+  function loadAdminData() {
+    const bookings = getBookings();
+    const customers = new Set(bookings.map(b => b.phone));
+    const revenue = bookings.reduce((s, b) => s + b.total, 0);
+    
+    document.getElementById('adminTotalOrders').textContent = bookings.length;
+    document.getElementById('adminRevenue').textContent = '₹' + revenue;
+    document.getElementById('adminCustomers').textContent = customers.size;
+    document.getElementById('adminProfit').textContent = '₹' + Math.round(revenue * 0.25);
+    
+    const list = document.getElementById('adminOrdersList');
+    if (bookings.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><div>No orders yet</div></div>`;
+      return;
+    }
+    
+    let html = '';
+    bookings.forEach(o => {
+      const icon = o.type === 'anything' ? '✨' : (o.type === 'bike' ? '🏍️' : '🛺');
+      const time = new Date(o.date).toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+      html += `<div class="order-card ${o.status}">
+        <div class="order-header">
+          <span class="order-id">#${o.id}</span>
+          <span class="order-status-tag tag-${o.status}">${o.status.toUpperCase()}</span>
+        </div>
+        <div class="order-body">
+          <div class="order-type-icon">${icon}</div>
+          <div class="order-content">
+            <div class="order-customer">${o.name} • ${o.phone}</div>
+            <div class="order-route">${o.pickup} → ${o.drop}</div>
+            <div style="font-size:10px; color:#999; margin-top:3px;">${time}</div>
+          </div>
+          <div class="order-amount">
+            <div class="order-price">₹${o.total}</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:6px; margin-top:8px; padding-top:8px; border-top:1px solid #F0F0F0;">
+          <a href="https://wa.me/91${o.phone}" target="_blank" style="flex:1; background:#25D366; color:white; padding:7px; border-radius:6px; text-align:center; font-size:11px; font-weight:700; text-decoration:none;">💬 WhatsApp</a>
+          <a href="tel:+91${o.phone}" style="flex:1; background:#FF6B35; color:white; padding:7px; border-radius:6px; text-align:center; font-size:11px; font-weight:700; text-decoration:none;">📞 Call</a>
+        </div>
+      </div>`;
+    });
+    list.innerHTML = html;
+  }
+  
+  function exportData() {
+    const bookings = getBookings();
+    if (bookings.length === 0) { showToast('❌ No data'); return; }
+    
+    let csv = 'Order ID,Date,Type,Customer,Phone,Pickup,Drop,Amount,Status\n';
+    bookings.forEach(o => {
+      const date = new Date(o.date).toLocaleString('en-IN');
+      csv += `"${o.id}","${date}","${o.type}","${o.name}","${o.phone}","${o.pickup}","${o.drop}",₹${o.total},"${o.status}"\n`;
+    });
+    
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'moveit_orders.csv';
+    a.click();
+    showToast('✅ Exported!');
+  }
+  
+  function clearAdminData() {
+    if (confirm('Clear all data?')) {
+      localStorage.clear();
+      location.reload();
+    }
+  }
+  
+  // ===== UTILITY =====
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+</script>
+
 </body>
 </html>
-
