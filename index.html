@@ -729,18 +729,6 @@
     cursor: pointer;
   }
 </style>
-
-<!-- MoveIt upgrade: optional Firebase realtime sync (UI/model unchanged) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
-<style>
-  /* Small upgrade only: stronger mobile polish, no model/layout change */
-  .input-field{transition:border-color .2s, box-shadow .2s}
-  .input-field:focus{box-shadow:0 0 0 4px rgba(255,107,53,.12)}
-  .role-card,.service-main,.category-item,.vehicle-option,.btn,.btn-action{transition:transform .16s, box-shadow .16s}
-  .order-card,.booking-item,.earning-box{box-shadow:0 6px 18px rgba(0,0,0,.06)}
-  .sync-badge{font-size:10px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.22);display:inline-block;margin-left:6px}
-</style>
 </head>
 <body>
 
@@ -796,7 +784,7 @@
   <div class="header-content">
     <div>
       <div class="logo">Move<span>It</span> 🚐</div>
-      <div class="header-meta">📍 తాడేపల్లిగూడెం <span class="sync-badge">Ready</span></div>
+      <div class="header-meta">📍 తాడేపల్లిగూడెం</div>
     </div>
     <button class="switch-role-btn" onclick="backToRoles()">↻ Switch</button>
   </div>
@@ -807,7 +795,7 @@
   <div class="header-content">
     <div>
       <div class="logo">Move<span>It</span> Partner</div>
-      <div class="header-meta">🏍️ Driver Mode <span class="sync-badge">Live</span></div>
+      <div class="header-meta">🏍️ Driver Mode</div>
     </div>
     <button class="switch-role-btn" onclick="backToRoles()">↻ Switch</button>
   </div>
@@ -818,7 +806,7 @@
   <div class="header-content">
     <div>
       <div class="logo">Move<span>It</span> Admin</div>
-      <div class="header-meta">📊 Owner Control <span class="sync-badge">Admin</span></div>
+      <div class="header-meta">📊 Owner Control</div>
     </div>
     <button class="switch-role-btn" onclick="backToRoles()">↻ Switch</button>
   </div>
@@ -1185,7 +1173,6 @@
   
   <div style="margin-top:20px; display:flex; gap:8px;">
     <button class="btn btn-primary" onclick="exportData()">📥 Export CSV</button>
-    <button class="btn btn-secondary" onclick="loadAdminData()">🔄 Refresh</button>
     <button class="btn btn-secondary" onclick="clearAdminData()">🗑️ Clear</button>
   </div>
 </div>
@@ -1212,25 +1199,17 @@
 
 <div class="toast" id="toast"></div>
 
+<!-- ===== FIREBASE LIVE SYNC UPGRADE - SAME UI MODEL ===== -->
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics-compat.js"></script>
+
 <script>
   // ===== CONFIG =====
   const CONFIG = {
-    officePhone: '919876543210', // ⚠️ CHANGE THIS!
+    officePhone: '918341023058', // Office WhatsApp/Call
     adminPassword: 'moveit2026', // ⚠️ CHANGE THIS!
-    minPrice: 50,
-    // Firebase optional: paste your Firebase config here to make all phones share orders live.
-    // Keep this as null and app will safely work in local/demo mode.
-    firebaseConfig: null
-    /* Example:
-    firebaseConfig: {
-      apiKey: 'YOUR_API_KEY',
-      authDomain: 'YOUR_PROJECT.firebaseapp.com',
-      projectId: 'YOUR_PROJECT',
-      storageBucket: 'YOUR_PROJECT.appspot.com',
-      messagingSenderId: 'SENDER_ID',
-      appId: 'APP_ID'
-    }
-    */
+    minPrice: 50
   };
   
   let currentRole = null;
@@ -1239,63 +1218,102 @@
   let isDriverOnline = true;
   let selectedCategory = null;
 
-  let db = null;
-  let isCloudReady = false;
+  // ===== FIREBASE CONFIG - LIVE ORDERS =====
+  const firebaseConfig = {
+    apiKey: "AIzaSyAiCJMJv90NsTtnExBHVFVJ9IC3VD8X8o0",
+    authDomain: "moveit-app-6293a.firebaseapp.com",
+    projectId: "moveit-app-6293a",
+    storageBucket: "moveit-app-6293a.firebasestorage.app",
+    messagingSenderId: "28489355699",
+    appId: "1:28489355699:web:0059432b0dfba75227fbc6",
+    measurementId: "G-HKFFTNYMLM"
+  };
 
-  function initFirebaseIfConfigured() {
+  let db = null;
+  let firebaseReady = false;
+  let ordersUnsubscribe = null;
+
+  function initFirebase() {
     try {
-      if (!CONFIG.firebaseConfig || !CONFIG.firebaseConfig.apiKey) return;
-      if (!window.firebase) return;
-      if (!firebase.apps.length) firebase.initializeApp(CONFIG.firebaseConfig);
+      if (!window.firebase) return false;
+      if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
       db = firebase.firestore();
-      isCloudReady = true;
-      listenCloudBookings();
-      showToast('☁️ Live sync ON');
+      try { firebase.analytics(); } catch(e) {}
+      firebaseReady = true;
+      console.log('MoveIt Firebase connected');
+      return true;
     } catch (err) {
-      console.warn('Firebase not connected:', err);
-      isCloudReady = false;
+      console.warn('Firebase not ready:', err);
+      firebaseReady = false;
+      return false;
     }
   }
 
-  function listenCloudBookings() {
-    if (!db) return;
-    db.collection('bookings').orderBy('date', 'desc').limit(100).onSnapshot((snap) => {
-      const cloudBookings = [];
-      snap.forEach(doc => cloudBookings.push({ ...doc.data(), id: doc.id }));
-      if (cloudBookings.length) {
-        localStorage.setItem('moveit_bookings', JSON.stringify(cloudBookings));
-        if (currentRole === 'admin') loadAdminData();
-        if (currentRole === 'customer' && document.getElementById('customerBookings').classList.contains('active')) loadCustomerBookings();
+  function startFirebaseSync() {
+    if (!firebaseReady || !db || ordersUnsubscribe) return;
+    ordersUnsubscribe = db.collection('orders').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
+      const cloudOrders = [];
+      snapshot.forEach(doc => cloudOrders.push({ firestoreId: doc.id, ...doc.data() }));
+      if (cloudOrders.length) {
+        localStorage.setItem('moveit_bookings', JSON.stringify(cloudOrders));
       }
-    }, (err) => console.warn('Cloud listen error:', err));
+      if (currentRole === 'admin') loadAdminData();
+      if (currentRole === 'customer' && document.getElementById('customerBookings').classList.contains('active')) loadCustomerBookings();
+      if (currentRole === 'driver') showLiveDriverOrder(cloudOrders);
+    }, (err) => {
+      console.warn('Firestore sync error:', err);
+      showToast('⚠️ Firebase rules enable cheyandi');
+    });
   }
 
-  function syncBookingToCloud(booking) {
-    if (!db || !booking || !booking.id) return;
-    db.collection('bookings').doc(booking.id).set(booking, { merge: true }).catch(err => console.warn('Cloud save error:', err));
+  function saveBookingToFirebase(booking) {
+    if (!firebaseReady || !db) return Promise.resolve(false);
+    const data = {
+      ...booking,
+      createdAt: booking.createdAt || firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    return db.collection('orders').doc(booking.id).set(data, { merge: true })
+      .then(() => true)
+      .catch(err => { console.warn('Firebase save failed:', err); showToast('⚠️ Local save only'); return false; });
   }
 
-  function updateBookingStatus(orderId, status) {
-    if (!orderId) return;
-    const bookings = getBookings();
-    const updated = bookings.map(b => b.id === orderId ? { ...b, status } : b);
-    localStorage.setItem('moveit_bookings', JSON.stringify(updated));
-    const booking = updated.find(b => b.id === orderId);
-    if (booking) syncBookingToCloud(booking);
+  function updateBookingStatus(id, status, extra = {}) {
+    const bookings = getBookings().map(o => o.id === id ? { ...o, status, ...extra } : o);
+    localStorage.setItem('moveit_bookings', JSON.stringify(bookings));
+    if (firebaseReady && db) {
+      db.collection('orders').doc(id).set({ status, ...extra, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true })
+        .catch(err => console.warn('Firebase update failed:', err));
+    }
   }
 
+  function showLiveDriverOrder(orders) {
+    if (!isDriverOnline || activeTrip) return;
+    const newOrder = orders.find(o => o.status === 'confirmed' || o.status === 'pending');
+    if (!newOrder) return;
+    const existing = document.getElementById('newOrderContainer').innerHTML;
+    if (existing && existing.includes(newOrder.id)) return;
+    const driverOrder = {
+      ...newOrder,
+      customerName: newOrder.name || newOrder.customerName || 'Customer',
+      customerPhone: newOrder.phone || newOrder.customerPhone || '',
+      totalFare: newOrder.total || newOrder.totalFare || 0,
+      driverEarning: newOrder.driverEarning || Math.round((newOrder.total || newOrder.totalFare || 0) * 0.65),
+      customerRating: 5
+    };
+    displayNewOrder(driverOrder);
+  }
   
   // ===== INITIALIZATION =====
   window.addEventListener('load', () => {
+    initFirebase();
+    startFirebaseSync();
     // Check if user has previous role saved
     const savedRole = localStorage.getItem('moveit_role');
     if (savedRole) {
       // Show role screen first anyway
     }
     document.getElementById('officeNum').textContent = '+91 ' + CONFIG.officePhone.slice(2);
-    initFirebaseIfConfigured();
-    const user = JSON.parse(localStorage.getItem('moveit_user') || 'null');
-    if (user && user.name) document.getElementById('greetUser').textContent = `నమస్కారం ${user.name}! 🙏`;
   });
   
   // ===== ROLE SELECTION =====
@@ -1688,12 +1706,16 @@
     const bookings = getBookings().filter(b => b.id !== booking.id);
     bookings.unshift(booking);
     localStorage.setItem('moveit_bookings', JSON.stringify(bookings));
-    syncBookingToCloud(booking);
+    saveBookingToFirebase(booking);
   }
   
   function getBookings() {
-    try { return JSON.parse(localStorage.getItem('moveit_bookings') || '[]'); }
-    catch(e) { localStorage.setItem('moveit_bookings', '[]'); return []; }
+    try {
+      return JSON.parse(localStorage.getItem('moveit_bookings') || '[]');
+    } catch(e) {
+      localStorage.setItem('moveit_bookings', '[]');
+      return [];
+    }
   }
   
   function saveUserData(name, phone) {
@@ -1778,8 +1800,7 @@
         customerRating: 4.5 + Math.random() * 0.5,
         pickup: b.pickup,
         drop: b.drop,
-        items: Array.isArray(b.items) ? b.items.map(i => `${i.name} ${i.qty || ''}`).join(', ') : (b.items || ''),
-        orderId: b.id,
+        items: b.items || (b.type === 'anything' ? b.items.map(i => i.name).join(', ') : ''),
         service: b.service,
         distance: b.distance,
         totalFare: b.total,
@@ -1864,6 +1885,8 @@
   
   function acceptOrder(order) {
     clearInterval(window.orderTimerInterval);
+    const driverName = localStorage.getItem('driver_name') || 'Driver';
+    updateBookingStatus(order.id, 'active', { driverName, acceptedAt: new Date().toISOString() });
     document.getElementById('newOrderContainer').innerHTML = `
       <div style="background:linear-gradient(135deg, #4CAF50, #2E7D32); color:white; padding:15px; border-radius:12px; margin-bottom:15px; text-align:center;">
         <div style="font-size:18px; font-weight:900; margin-bottom:5px;">✅ Order Accepted!</div>
@@ -1875,7 +1898,6 @@
       </div>
     `;
     activeTrip = order;
-    updateBookingStatus(order.orderId, 'active');
     showToast('✅ Order accepted!');
   }
   
@@ -1885,8 +1907,8 @@
     const trips = JSON.parse(localStorage.getItem('driver_trips') || '[]');
     trips.unshift({ ...activeTrip, completedAt: new Date().toISOString() });
     localStorage.setItem('driver_trips', JSON.stringify(trips));
+    updateBookingStatus(activeTrip.id, 'completed', { completedAt: new Date().toISOString(), driverEarning: activeTrip.driverEarning });
     
-    updateBookingStatus(activeTrip.orderId, 'completed');
     showToast('🎉 Trip done! Earned ₹' + activeTrip.driverEarning);
     activeTrip = null;
     document.getElementById('newOrderContainer').innerHTML = '';
